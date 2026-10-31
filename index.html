@@ -313,6 +313,21 @@ footer p{margin:0 0 6px;max-width:820px}
 .drill-thumb-badge{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.75);color:#fff;font-size:11px;font-weight:600;padding:2px 6px;border-radius:4px;backdrop-filter:blur(4px);z-index:2}
 .drill-thumb-overlay{position:absolute;bottom:6px;right:6px;background:rgba(235,94,40,.9);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;z-index:2}
 
+
+/* 课程页赛前训练直通横幅 */
+.pregame-quick-banner{background:linear-gradient(135deg, rgba(235,94,40,0.12), rgba(243,156,18,0.08));border:1.5px solid var(--orange);border-radius:12px;padding:14px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+.pregame-quick-banner:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(235,94,40,0.2)}
+.quick-banner-content{display:flex;flex-direction:column;gap:4px}
+.quick-banner-tag{font-size:11px;font-weight:700;color:var(--orange-text);letter-spacing:0.5px;text-transform:uppercase}
+.pregame-quick-banner h4{margin:0;font-size:16px;font-weight:700;color:var(--text)}
+.pregame-quick-banner p{margin:0;font-size:13px;color:var(--muted);line-height:1.4}
+.quick-banner-btn{background:var(--orange);color:#fff;border:0;border-radius:8px;padding:8px 18px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:opacity .15s}
+.quick-banner-btn:hover{opacity:0.9}
+@media (max-width:700px){
+  .pregame-quick-banner{flex-direction:column;align-items:flex-start}
+  .quick-banner-btn{width:100%;justify-content:center}
+}
+
 </style>
 </head>
 <body>
@@ -349,6 +364,14 @@ footer p{margin:0 0 6px;max-width:820px}
 <main class="wrap">
   <!-- 课程目录 -->
   <div class="view" id="v-course">
+    <div class="pregame-quick-banner" onclick="location.hash='#/pregame'" role="button" tabindex="0" title="点击立即进入赛前20分钟控球实战动图训练">
+      <div class="quick-banner-content">
+        <span class="quick-banner-tag">⚡️ 今日比赛前必练 · 控球神经激活</span>
+        <h4>赛前 20 分钟 · 库里招牌控球实战动图专项已上线</h4>
+        <p>包含超低空重砸、口袋悬停、坠步变向、变速三连动等 6 大动作高帧率实战动图与原片精准秒数</p>
+      </div>
+      <button class="quick-banner-btn">立即进入实战动图 ▶</button>
+    </div>
     <div class="course">
       <aside class="side" aria-label="课程列表">
         <input class="search" id="q" type="search" placeholder="搜索：如 控球、挡拆、抛投、接球…" aria-label="搜索课程">
@@ -1525,8 +1548,9 @@ $$('.tab').forEach(t => {
 });
 
 function route(){
-  const h = location.hash.replace(/^#\/?/, '');
-  const [view, arg] = h.split('/');
+  const rawH = location.hash.replace(/^#\/?/, '');
+  const cleanH = rawH.startsWith('v-') ? rawH.slice(2) : rawH;
+  const [view, arg] = cleanH.split('/');
   progress();
 
   if(view === 'lesson' && L[Number(arg) - 1]){
