@@ -10,14 +10,16 @@
   --accent:#2783DE; --accent-text:#1A64B0; --accent-soft:#E5F2FC;
   --green:#46A171; --green-text:#2C7450; --green-soft:#E8F1EC;
   --orange:#D5803B; --orange-text:#9A5217; --orange-soft:#FBEBDE;
+  --card-bg:#FFFFFF;
   --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 12px rgba(0,0,0,.04);
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --text:#FFFFFF; --muted:rgba(255,255,255,.65); --bg:#191919; --soft:#202020; --surface2:#2A2A29; --border:rgba(255,255,255,.18);
-    --accent:#5E9FE8; --accent-text:#8DBDF2; --accent-soft:rgba(94,159,232,.12);
-    --green:#72BC8F; --green-text:#93D1AB; --green-soft:rgba(114,188,143,.12);
-    --orange:#DE9255; --orange-text:#EBB27F; --orange-soft:rgba(222,146,85,.12);
+    --text:#FFFFFF; --muted:rgba(255,255,255,.65); --bg:#141414; --soft:#1E1E1E; --surface2:#282828; --border:rgba(255,255,255,.14);
+    --accent:#5E9FE8; --accent-text:#8DBDF2; --accent-soft:rgba(94,159,232,.14);
+    --green:#72BC8F; --green-text:#93D1AB; --green-soft:rgba(114,188,143,.14);
+    --orange:#DE9255; --orange-text:#EBB27F; --orange-soft:rgba(222,146,85,.14);
+    --card-bg:#1A1A1A;
     --shadow:none;
   }
 }
@@ -31,45 +33,46 @@ button{font:inherit;color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
 
 /* Header */
-header{border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:10}
-.head{display:flex;align-items:center;gap:24px;padding:20px 0 12px}
+header{border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:20}
+.head{display:flex;align-items:center;gap:24px;padding:16px 0 10px}
 .logo{width:40px;height:40px;flex:none}
-.title h1{font-size:22px;line-height:1.3;margin:0;font-weight:700}
-.title p{margin:2px 0 0;color:var(--muted);font-size:14px}
-.progress{margin-left:auto;width:260px;display:flex;flex-direction:column;gap:8px}
-.prow{display:grid;grid-template-columns:auto 1fr 44px;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+.title h1{font-size:21px;line-height:1.3;margin:0;font-weight:700}
+.title p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.progress{margin-left:auto;width:240px;display:flex;flex-direction:column;gap:6px}
+.prow{display:grid;grid-template-columns:auto 1fr 40px;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 .prow b{color:var(--text);font-weight:600;text-align:right}
-.bar{height:8px;background:var(--surface2);border-radius:8px;overflow:hidden;display:flex}
+.bar{height:7px;background:var(--surface2);border-radius:8px;overflow:hidden;display:flex}
 .bar i{display:block;height:100%}
 .bar .w{background:var(--accent)}
 .bar .p{background:var(--green)}
 nav.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 nav.tabs::-webkit-scrollbar{display:none}
-.tab{border:0;background:none;padding:10px 14px;min-height:44px;cursor:pointer;color:var(--muted);font-size:15px;border-bottom:2px solid transparent;white-space:nowrap}
+.tab{border:0;background:none;padding:10px 14px;min-height:44px;cursor:pointer;color:var(--muted);font-size:15px;border-bottom:2px solid transparent;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
 .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--text);font-weight:600}
 .tab:hover{color:var(--text)}
+.tab-badge{font-size:11px;padding:2px 6px;border-radius:999px;background:var(--orange-soft);color:var(--orange-text);font-weight:600}
 
-main.wrap{padding-top:32px;padding-bottom:64px}
+main.wrap{padding-top:28px;padding-bottom:64px}
 .view[hidden]{display:none!important}
 
 /* Course layout */
-.course{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:start}
-.side{position:sticky;top:140px;max-height:calc(100vh - 160px);display:flex;flex-direction:column}
-.search{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:15px;min-height:44px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
-.chip{border:1px solid var(--border);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer;min-height:36px;color:var(--muted)}
+.course{display:grid;grid-template-columns:330px 1fr;gap:32px;align-items:start}
+.side{position:sticky;top:130px;max-height:calc(100vh - 150px);display:flex;flex-direction:column}
+.search{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:14px;min-height:40px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip{border:1px solid var(--border);background:var(--bg);border-radius:999px;padding:4px 10px;font-size:13px;cursor:pointer;min-height:32px;color:var(--muted)}
 .chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
 .list{list-style:none;margin:0;padding:0;overflow-y:auto;border-top:1px solid var(--border)}
-.item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;background:none;padding:12px 8px;border-bottom:1px solid var(--border);cursor:pointer;min-height:56px}
+.item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;background:none;padding:10px 8px;border-bottom:1px solid var(--border);cursor:pointer;min-height:52px}
 .item:hover{background:var(--soft)}
 .item[aria-current="true"]{background:var(--accent-soft)}
-.num{flex:none;width:28px;height:28px;border-radius:8px;background:var(--surface2);display:grid;place-items:center;font-size:13px;font-weight:600;color:var(--muted)}
+.num{flex:none;width:26px;height:26px;border-radius:6px;background:var(--surface2);display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--muted)}
 .item[aria-current="true"] .num{background:var(--accent);color:#fff}
 .it-main{flex:1;min-width:0}
-.it-title{font-size:15px;font-weight:500;line-height:1.35}
-.it-meta{font-size:13px;color:var(--muted);margin-top:2px}
+.it-title{font-size:14.5px;font-weight:500;line-height:1.35}
+.it-meta{font-size:12px;color:var(--muted);margin-top:2px}
 .marks{flex:none;display:flex;gap:4px}
-.mk{font-size:12px;padding:2px 6px;border-radius:6px;line-height:1.4}
+.mk{font-size:11px;padding:2px 5px;border-radius:4px;line-height:1.4}
 .mk.w{background:var(--accent-soft);color:var(--accent-text)}
 .mk.p{background:var(--green-soft);color:var(--green-text)}
 .empty{color:var(--muted);font-size:14px;padding:16px 8px}
@@ -77,36 +80,133 @@ main.wrap{padding-top:32px;padding-bottom:64px}
 /* Detail */
 .detail{min-width:0}
 .back{display:none;border:0;background:none;color:var(--accent-text);padding:8px 0;min-height:44px;cursor:pointer;font-size:15px}
-.eyebrow{font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.tag{display:inline-block;font-size:13px;padding:2px 8px;border-radius:6px;background:var(--surface2);color:var(--text)}
-.detail h2{font-size:30px;line-height:1.3;margin:8px 0 4px;font-weight:700}
-.en{color:var(--muted);margin:0 0 16px;font-size:15px}
+.eyebrow{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tag{display:inline-block;font-size:12px;padding:2px 7px;border-radius:5px;background:var(--surface2);color:var(--text)}
+.detail h2{font-size:28px;line-height:1.3;margin:8px 0 4px;font-weight:700}
+.en{color:var(--muted);margin:0 0 16px;font-size:14px}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--bg);border-radius:8px;padding:8px 14px;min-height:44px;cursor:pointer;font-size:15px;text-decoration:none;color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--bg);border-radius:8px;padding:8px 14px;min-height:40px;cursor:pointer;font-size:14px;text-decoration:none;color:var(--text)}
 .btn:hover{background:var(--soft)}
 .btn.on-w{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-text)}
 .btn.on-p{background:var(--green-soft);border-color:var(--green);color:var(--green-text)}
-.btn .box{width:16px;height:16px;border:1.5px solid currentColor;border-radius:4px;display:grid;place-items:center;font-size:11px;line-height:1}
-.goal{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:32px}
-.goal small{display:block;font-size:13px;color:var(--muted);margin-bottom:2px}
-.goal p{margin:0;font-size:18px;font-weight:600;line-height:1.45}
+.btn .box{width:15px;height:15px;border:1.5px solid currentColor;border-radius:4px;display:grid;place-items:center;font-size:10px;line-height:1}
+.goal{background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:28px}
+.goal small{display:block;font-size:12px;color:var(--muted);margin-bottom:2px}
+.goal p{margin:0;font-size:17px;font-weight:600;line-height:1.45}
 section.block{margin-bottom:32px}
 section.block h3{font-size:17px;margin:0 0 12px;font-weight:650;display:flex;align-items:baseline;gap:8px}
 section.block h3 span{font-size:13px;color:var(--muted);font-weight:400}
+
+/* Visual Motion Guide Card */
+.visual-card{border:1px solid var(--border);border-radius:12px;background:var(--card-bg);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px}
+.svg-diagram-wrap{width:100%;overflow:hidden;line-height:0;cursor:pointer;position:relative}
+.svg-diagram-wrap:hover::after{content:'🔍 点击放大查看高清力学图';position:absolute;bottom:8px;right:12px;font-size:11px;background:rgba(0,0,0,0.7);color:#fff;padding:3px 8px;border-radius:4px;line-height:1.4}
+.visual-cues{padding:14px 18px 16px;background:var(--soft);border-top:1px solid var(--border)}
+.cues-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.cues-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:10px}
+.cue-item{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+.cue-tag{display:inline-block;font-size:11px;font-weight:600;color:var(--orange-text);background:var(--orange-soft);padding:1px 6px;border-radius:4px;margin-bottom:3px}
+.cue-item p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.4}
+
+/* User Photos Section */
+.user-photos-section{margin-top:20px;padding:16px;border:1px dashed var(--border);border-radius:10px;background:var(--soft)}
+.user-photos-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.user-photos-header h4{margin:0;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+.user-photos-header h4 span{font-size:12px;font-weight:400;color:var(--muted)}
+.photos-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));gap:10px;min-height:50px}
+.photo-slot{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--border);background:#000;cursor:pointer}
+.photo-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-slot:hover .photo-del{display:flex}
+.photo-del{position:absolute;top:4px;right:4px;width:22px;height:22px;background:rgba(0,0,0,0.7);color:#fff;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:13px;cursor:pointer;border:none}
+.photo-dropzone{border:1px dashed var(--border);border-radius:8px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--muted);font-size:12px;cursor:pointer;background:var(--card-bg)}
+.photo-dropzone:hover{border-color:var(--accent);color:var(--accent-text)}
+
 .topics{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.topics li{border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:14px;background:var(--bg)}
+.topics li{border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:13.5px;background:var(--bg)}
 .points{margin:0;padding-left:20px;max-width:720px}
 .points li{margin-bottom:8px}
-.drills{width:100%;border-collapse:collapse;font-size:15px;max-width:760px}
+.drills{width:100%;border-collapse:collapse;font-size:14.5px;max-width:760px}
 .drills th{text-align:left;font-size:13px;color:var(--muted);font-weight:500;padding:8px 12px;border-bottom:1px solid var(--border)}
-.drills td{padding:12px;border-bottom:1px solid var(--border);vertical-align:top}
+.drills td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
 .drills td:last-child{color:var(--muted);white-space:nowrap;width:1%}
 .check{border-left:3px solid var(--orange);background:var(--orange-soft);padding:12px 16px;border-radius:0 8px 8px 0;max-width:720px}
 .check b{color:var(--orange-text);font-weight:600;margin-right:4px}
-textarea{width:100%;min-height:160px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font:inherit;font-size:15px;line-height:1.6;resize:vertical;max-width:760px}
+textarea{width:100%;min-height:150px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font:inherit;font-size:14.5px;line-height:1.6;resize:vertical;max-width:760px}
 .saved{font-size:13px;color:var(--muted);margin-top:6px;min-height:20px}
 
-/* Need view */
+/* PRE-GAME 20-MIN VIEW */
+.pregame-hero{margin-bottom:28px}
+.pregame-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--orange-soft);color:var(--orange-text);margin-bottom:8px}
+.pregame-hero h2{font-size:26px;margin:0 0 6px;font-weight:800}
+.pregame-sub{margin:0;color:var(--muted);font-size:14.5px;max-width:780px;line-height:1.55}
+
+/* Timer Control Console */
+.timer-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);margin-bottom:32px;display:flex;flex-direction:column;gap:16px}
+.timer-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.timer-clock-box{display:flex;align-items:baseline;gap:14px}
+.timer-clock{font-size:46px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-1px;line-height:1;color:var(--text)}
+.timer-stage-info{display:flex;flex-direction:column}
+.timer-stage-name{font-size:18px;font-weight:700;color:var(--text)}
+.timer-stage-sub{font-size:13px;color:var(--muted)}
+.timer-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.timer-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-weight:600;font-size:14px;cursor:pointer}
+.timer-btn:hover{background:var(--soft)}
+.timer-btn.primary{background:var(--orange);color:#fff;border-color:var(--orange)}
+.timer-btn.primary:hover{opacity:.9}
+.timer-btn.icon-only{width:42px;padding:0;font-size:16px}
+.timer-btn.active{background:var(--surface2)}
+.timer-progress-wrap{width:100%;height:8px;background:var(--surface2);border-radius:999px;overflow:hidden;position:relative}
+.timer-progress-bar{height:100%;background:linear-gradient(90deg, var(--accent) 0%, var(--orange) 100%);border-radius:999px;transition:width .3s ease}
+
+/* Active Drill Feature Card */
+.drill-active-card{border:2px solid var(--accent);border-radius:16px;background:var(--card-bg);padding:24px;margin-bottom:36px;box-shadow:var(--shadow)}
+.active-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.active-badge{background:var(--accent-soft);color:var(--accent-text);font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px}
+.active-title-row{display:flex;align-items:baseline;gap:12px}
+.active-title-row h3{margin:0;font-size:22px;font-weight:700}
+.active-title-row span{color:var(--muted);font-size:14px}
+.active-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start}
+.active-diagram{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--soft)}
+.active-cues-panel{display:flex;flex-direction:column;gap:12px}
+.active-cue-box{background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.active-cue-box h5{margin:0 0 4px;font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.active-cue-box p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+.active-cue-box.warn{border-left:3px solid var(--orange);background:var(--orange-soft)}
+.active-cue-box.warn h5{color:var(--orange-text)}
+
+/* 6 Drills Pipeline Cards */
+.drills-grid-title{font-size:18px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:8px}
+.drills-grid-title span{font-size:13px;font-weight:400;color:var(--muted)}
+.pregame-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:18px;margin-bottom:36px}
+.drill-card{border:1px solid var(--border);border-radius:14px;background:var(--card-bg);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.drill-card.current{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.drill-card-head{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--soft)}
+.drill-card-title{font-size:15px;font-weight:700;margin:0;display:flex;align-items:center;gap:8px}
+.drill-step-num{width:22px;height:22px;border-radius:50%;background:var(--surface2);font-size:11px;font-weight:700;display:grid;place-items:center;color:var(--muted)}
+.drill-card.current .drill-step-num{background:var(--accent);color:#fff}
+.drill-dur{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface2);color:var(--muted)}
+.drill-card-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:12px}
+.drill-thumb{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--soft);cursor:pointer}
+.drill-bullets{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.drill-bullets li{font-size:13px;color:var(--muted);display:flex;gap:6px;line-height:1.4}
+.drill-bullets li::before{content:'•';color:var(--orange);font-weight:bold}
+.drill-card-footer{padding:10px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--soft)}
+.jump-btn{border:0;background:none;color:var(--accent-text);font-size:13px;font-weight:600;cursor:pointer;padding:4px 0}
+.jump-btn:hover{text-decoration:underline}
+
+/* Workout Log & Feeling section */
+.workout-log{border:1px solid var(--border);border-radius:14px;background:var(--card-bg);padding:20px 22px;margin-bottom:32px}
+.workout-log h4{margin:0 0 10px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:8px}
+.log-form{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.rating-select{display:flex;gap:4px}
+.star-btn{font-size:20px;border:none;background:none;cursor:pointer;opacity:.3;transition:opacity .15s}
+.star-btn.on{opacity:1;color:#f59e0b}
+.log-input{flex:1;min-width:240px;height:38px;padding:0 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:14px}
+.log-list{display:flex;flex-direction:column;gap:8px}
+.log-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px;background:var(--soft);border-radius:8px;font-size:13px}
+.log-meta{color:var(--muted);font-size:12px}
+
+/* Needs & Plan & Notes Views */
 .lead{max-width:680px;margin:0 0 24px}
 .lead h2{font-size:26px;margin:0 0 6px}
 .lead p{margin:0;color:var(--muted)}
@@ -119,7 +219,6 @@ textarea{width:100%;min-height:160px;padding:12px 14px;border:1px solid var(--bo
 .golink:hover{background:var(--accent-soft)}
 .golink .num{width:24px;height:24px;font-size:12px}
 
-/* Plan view */
 .weeks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
 .week{border:1px solid var(--border);border-radius:12px;padding:20px}
 .week .wk{font-size:13px;color:var(--muted)}
@@ -137,17 +236,30 @@ textarea{width:100%;min-height:160px;padding:12px 14px;border:1px solid var(--bo
 .step p{margin:0;color:var(--muted);font-size:14px}
 h3.sec{font-size:20px;margin:0 0 12px}
 
-/* Notes view */
 .notes-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
 .note-card{border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:12px;max-width:820px}
 .note-card h4{margin:0 0 6px;font-size:16px}
 .note-card h4 a{text-decoration:none;color:var(--text)}
 .note-card pre{margin:0;white-space:pre-wrap;font:inherit;font-size:15px;color:var(--text)}
 
+/* Lightbox Modal */
+.lightbox-modal{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);z-index:999;display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox-modal.active{display:flex}
+.lightbox-content{max-width:920px;width:100%;max-height:90vh;background:var(--bg);border-radius:14px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+.lightbox-header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);background:var(--soft)}
+.lightbox-title{font-size:15px;font-weight:700;margin:0}
+.lightbox-close{border:none;background:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1}
+.lightbox-close:hover{color:var(--text)}
+.lightbox-body{padding:16px;overflow:auto;display:flex;align-items:center;justify-content:center;min-height:300px}
+.lightbox-body img{max-width:100%;max-height:75vh;border-radius:8px;object-fit:contain}
+.lightbox-body svg{max-width:100%;height:auto}
+
 footer{border-top:1px solid var(--border);padding:24px 0 40px;color:var(--muted);font-size:14px}
 footer p{margin:0 0 6px;max-width:820px}
 
 @media (max-width:900px){
+  .pregame-grid{grid-template-columns:1fr}
+  .active-grid{grid-template-columns:1fr}
   .needs,.weeks{grid-template-columns:repeat(2,1fr)}
   .session{grid-template-columns:1fr 1fr}
   .step{border-bottom:1px solid var(--border)}
@@ -162,7 +274,7 @@ footer p{margin:0 0 6px;max-width:820px}
   .title h1{font-size:19px}
   .title p{font-size:13px}
   .progress{margin-left:0;width:100%}
-  .tab{padding:10px 10px}
+  .tab{padding:8px 10px;font-size:14px}
   .course{grid-template-columns:1fr;gap:0}
   .side{position:static;max-height:none}
   .list{overflow:visible}
@@ -174,9 +286,10 @@ footer p{margin:0 0 6px;max-width:820px}
   .session{grid-template-columns:1fr}
   .step{border-right:0}
   .drills td:last-child{white-space:normal;width:auto;min-width:96px}
+  .timer-clock{font-size:38px}
 }
 @media (prefers-reduced-motion:no-preference){
-  .item,.btn,.chip,.golink{transition:background-color .15s ease}
+  .item,.btn,.chip,.golink,.timer-btn{transition:background-color .15s ease, border-color .15s ease}
 }
 </style>
 </head>
@@ -185,20 +298,25 @@ footer p{margin:0 0 6px;max-width:820px}
   <div class="wrap">
     <div class="head">
       <svg class="logo" viewBox="0 0 40 40" aria-hidden="true">
-        <circle cx="20" cy="20" r="18" fill="none" stroke="var(--orange)" stroke-width="2.5"/>
-        <path d="M2 20h36M20 2v36M7.5 7.5c6 5 6 20 0 25M32.5 7.5c-6 5-6 20 0 25" fill="none" stroke="var(--orange)" stroke-width="2"/>
+        <circle cx="20" cy="20" r="19" fill="#D5803B"/>
+        <circle cx="20" cy="20" r="19" fill="none" stroke="#2C2C2B" stroke-width="2"/>
+        <path d="M 1 20 H 39" stroke="#2C2C2B" stroke-width="2"/>
+        <path d="M 20 1 V 39" stroke="#2C2C2B" stroke-width="2"/>
+        <path d="M 7 5 Q 16 20 7 35" fill="none" stroke="#2C2C2B" stroke-width="2"/>
+        <path d="M 33 5 Q 24 20 33 35" fill="none" stroke="#2C2C2B" stroke-width="2"/>
       </svg>
       <div class="title">
-        <h1>库里大师课 · 训练学习系统</h1>
-        <p>Stephen Curry Teaches Shooting, Ball-Handling, and Scoring · <span id="sumMeta"></span></p>
+        <h1>库里大师课 · 篮球训练系统</h1>
+        <p>Stephen Curry Teaches Shooting, Ball-Handling, and Scoring</p>
       </div>
-      <div class="progress" aria-label="学习进度">
-        <div class="prow"><span>已看</span><div class="bar"><i class="w" id="bW"></i></div><b><span id="cW">0</span>/17</b></div>
-        <div class="prow"><span>已练</span><div class="bar"><i class="p" id="bP"></i></div><b><span id="cP">0</span>/17</b></div>
+      <div class="progress" aria-label="总体进度">
+        <div class="prow"><span>已看课</span><div class="bar"><i class="w" id="bw" style="width:0%"></i></div><b id="pw">0/17</b></div>
+        <div class="prow"><span>已练过</span><div class="bar"><i class="p" id="bp" style="width:0%"></i></div><b id="pp">0/17</b></div>
       </div>
     </div>
     <nav class="tabs" role="tablist" aria-label="主导航">
       <button class="tab" role="tab" data-view="course">课程目录</button>
+      <button class="tab" role="tab" data-view="pregame">⚡️ 赛前20分控球专项 <span class="tab-badge">今日必练</span></button>
       <button class="tab" role="tab" data-view="need">按需找课</button>
       <button class="tab" role="tab" data-view="plan">训练计划</button>
       <button class="tab" role="tab" data-view="notes">我的笔记</button>
@@ -211,19 +329,80 @@ footer p{margin:0 0 6px;max-width:820px}
   <div class="view" id="v-course">
     <div class="course">
       <aside class="side" aria-label="课程列表">
-        <input class="search" id="q" type="search" placeholder="搜索：如 挡拆、抛投、接球…" aria-label="搜索课程">
-        <div class="chips" id="chips" role="group" aria-label="按模块筛选"></div>
-        <ul class="list" id="list"></ul>
+        <input class="search" id="q" type="search" placeholder="搜索：如 控球、挡拆、抛投、接球…" aria-label="搜索课程">
+        <div class="chips" id="chips" role="group" aria-label="模块筛选"></div>
+        <ul class="list" id="list" role="list"></ul>
       </aside>
       <article class="detail" id="detail" aria-live="polite"></article>
+    </div>
+  </div>
+
+  <!-- 赛前20分控球专项 -->
+  <div class="view" id="v-pregame" hidden>
+    <div class="pregame-hero">
+      <div class="pregame-badge">🏀 比赛前 20 分钟专属激活包</div>
+      <h2>赛前 20 分钟 · 控球神经与爆发专项</h2>
+      <p class="pregame-sub">正式打比赛前不盲目乱运。按库里训练师的五阶科学流程，从低空指尖唤醒、口袋悬停、坠步沉髋变向到犹豫步与盲视超负荷，逐层拉满手感，把球彻底化为身体的延伸。</p>
+    </div>
+
+    <!-- 计时控制台 -->
+    <div class="timer-card">
+      <div class="timer-header">
+        <div class="timer-clock-box">
+          <div class="timer-clock" id="pgTimerClock">20:00</div>
+          <div class="timer-stage-info">
+            <span class="timer-stage-name" id="pgStageName">准备开始</span>
+            <span class="timer-stage-sub" id="pgStageSub">共 6 项科学递进动作 · 阶段耗时待启动</span>
+          </div>
+        </div>
+        <div class="timer-controls">
+          <button class="timer-btn primary" id="pgStartBtn">开始专项训练 ▶</button>
+          <button class="timer-btn" id="pgPrevBtn" title="上一动作">⏮ 上一个</button>
+          <button class="timer-btn" id="pgNextBtn" title="下一动作">下一个 ⏭</button>
+          <button class="timer-btn" id="pgResetBtn" title="重置计时">重置 🔄</button>
+          <button class="timer-btn icon-only active" id="pgSoundBtn" title="提示音开/关">🔔</button>
+        </div>
+      </div>
+      <div class="timer-progress-wrap">
+        <div class="timer-progress-bar" id="pgProgressBar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- 当前主练动作特写卡 -->
+    <div class="drill-active-card" id="pgActiveCard">
+      <!-- 动态渲染当前动作 -->
+    </div>
+
+    <!-- 6大动作全景流水线卡片 -->
+    <h3 class="drills-grid-title">20 分钟全流程动作图解 <span>点击任意动作可直接聚焦练习</span></h3>
+    <div class="pregame-grid" id="pgGrid">
+      <!-- 动态渲染 6 个动作卡片 -->
+    </div>
+
+    <!-- 赛前打卡与手感反馈 -->
+    <div class="workout-log">
+      <h4>🎯 今日赛前打卡与手感记录 <span>做完后记录今天球感评分与体感反思</span></h4>
+      <div class="log-form">
+        <span style="font-size:13px;font-weight:600;color:var(--muted)">手感评分:</span>
+        <div class="rating-select" id="starRating">
+          <button class="star-btn on" data-val="1">★</button>
+          <button class="star-btn on" data-val="2">★</button>
+          <button class="star-btn on" data-val="3">★</button>
+          <button class="star-btn on" data-val="4">★</button>
+          <button class="star-btn on" data-val="5">★</button>
+        </div>
+        <input class="log-input" id="logNoteInput" placeholder="写一句今天手感体感，例如：口袋悬停很有感觉，防守人很容易被晃起…">
+        <button class="timer-btn primary" id="submitLogBtn" style="height:38px;padding:0 14px">完成今日打卡 ✓</button>
+      </div>
+      <div class="log-list" id="logList"></div>
     </div>
   </div>
 
   <!-- 按需找课 -->
   <div class="view" id="v-need" hidden>
     <div class="lead">
-      <h2>你现在最想解决什么？</h2>
-      <p>选一个场上遇到的问题，直接跳到对应的课。</p>
+      <h2>遇到问题，从这里开始</h2>
+      <p>按照球场上最常遇到的瓶颈分类，直接跳到对应课程。</p>
     </div>
     <div class="needs" id="needs"></div>
   </div>
@@ -232,38 +411,43 @@ footer p{margin:0 0 6px;max-width:820px}
   <div class="view" id="v-plan" hidden>
     <div class="lead">
       <h2>6 周训练计划</h2>
-      <p>每周看 2–3 节课，每周练 4–5 次。按顺序走一遍，再回到薄弱环节反复练。</p>
+      <p>按模块循序渐进，每周重点练 2-3 门课。</p>
     </div>
     <div class="weeks" id="weeks"></div>
-    <h3 class="sec">每次训练的结构（约 70 分钟）</h3>
+    <h3 class="sec">单次 70 分钟训练结构</h3>
     <div class="session" id="session"></div>
   </div>
 
   <!-- 我的笔记 -->
   <div class="view" id="v-notes" hidden>
     <div class="notes-head">
-      <div class="lead" style="margin:0">
-        <h2>我的笔记</h2>
-        <p>笔记只保存在这个浏览器里。换设备或清理浏览器前，先导出备份。</p>
+      <div>
+        <h2>我的全部笔记</h2>
+        <p style="margin:0;color:var(--muted)">你在各课写下的笔记都会汇集在这里，自动保存在本浏览器。</p>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn" id="exportBtn">导出笔记（Markdown）</button>
-        <label class="btn" for="importFile" style="cursor:pointer">导入备份</label>
-        <input type="file" id="importFile" accept=".json" hidden>
-        <button class="btn" id="backupBtn">导出完整备份（JSON）</button>
-      </div>
+      <button class="btn" id="exportBtn">导出全部笔记 (Markdown)</button>
     </div>
     <div id="notesList"></div>
   </div>
 </main>
 
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true">
+  <div class="lightbox-content">
+    <div class="lightbox-header">
+      <h4 class="lightbox-title" id="lightboxTitle">动作高清图解</h4>
+      <button class="lightbox-close" id="lightboxClose">×</button>
+    </div>
+    <div class="lightbox-body" id="lightboxBody"></div>
+  </div>
+</div>
+
 <footer>
   <div class="wrap">
-    <p><b>关于逐字稿：</b>课程视频和字幕的版权属于 MasterClass，本站不收录逐字稿。完整内容请在官方平台观看（播放器里可以打开字幕）。</p>
-    <p>“官方章节要点”是官网公开的章节标题，已翻成中文；“训练要点”“练习处方”是根据章节主题和常用篮球训练方法整理的学习笔记，不是库里原话，以视频为准。</p>
+    <p><b>库里大师课 · 篮球训练系统</b> · 配套 MasterClass 官方课程使用。训练前请充分热身，结合自身体能循序渐进。</p>
+    <p>所有课程学习标记、打卡记录、图片与个人笔记均存储在本地浏览器，离线安全可用。</p>
   </div>
 </footer>
-
 <script>
 const BASE = 'https://www.masterclass.com/classes/stephen-curry-teaches-shooting-ball-handling-and-scoring/chapters/';
 const MODS = {
@@ -404,159 +588,710 @@ const SESSION = [
 ];
 
 /* ---------- State ---------- */
-const KEY = 'curryMC.v1';
-let S = {watched:{}, practiced:{}, notes:{}};
-try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
+
+
+/* ---------- Visual Diagrams & Cues Data ---------- */
+const DIAGRAMS = {"pg_1": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">阶段一：超低空指尖控球 (10-15cm)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">极限激活指尖神经末梢 · 视线完全剥离</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <path d=\"M 120 195 L 140 150 L 180 120 L 210 65\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n      <circle cx=\"210\" cy=\"55\" r=\"10\" fill=\"var(--accent)\"/>\n      <line x1=\"210\" y1=\"55\" x2=\"420\" y2=\"55\" stroke=\"var(--accent)\" stroke-width=\"2\" stroke-dasharray=\"4,3\" marker-end=\"url(#arr-acc)\"/>\n      <text x=\"320\" y=\"45\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">视线完全剥离 · 平视前方</text>\n      <circle cx=\"270\" cy=\"175\" r=\"15\" fill=\"var(--orange)\"/>\n      <line x1=\"270\" y1=\"160\" x2=\"270\" y2=\"190\" stroke=\"var(--border)\" stroke-width=\"2\" stroke-dasharray=\"2,2\"/>\n      <path d=\"M 235 175 Q 252 155 270 175 T 305 175\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2\"/>\n      <path d=\"M 255 145 C 265 152, 275 152, 285 145\" fill=\"none\" stroke=\"var(--text)\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n      <text x=\"295\" y=\"165\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">⚡️ 离地 10-15cm 超低位</text>\n      <text x=\"295\" y=\"185\" font-size=\"11\" fill=\"var(--muted)\">只用指腹接触 · 听地面高频清脆回声</text>\n</svg>", "pg_2": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">阶段二：重砸与同侧口袋悬停 (Pocket Float)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">重力下砸借力反弹 · 口袋悬停 0.3s · 诱导防守失衡</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <line x1=\"160\" y1=\"100\" x2=\"160\" y2=\"190\" stroke=\"var(--orange)\" stroke-width=\"3.5\" marker-end=\"url(#arr-org)\"/>\n      <text x=\"100\" y=\"145\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">大力砸地 (Pound)</text>\n      <circle cx=\"160\" cy=\"195\" r=\"12\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2\"/>\n      <path d=\"M 160 195 Q 200 80 250 105\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"3\" marker-end=\"url(#arr-acc)\"/>\n      <rect x=\"235\" y=\"80\" width=\"130\" height=\"65\" rx=\"8\" fill=\"var(--orange-soft)\" stroke=\"var(--orange)\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/>\n      <circle cx=\"300\" cy=\"115\" r=\"16\" fill=\"var(--orange)\"/>\n      <path d=\"M 285 96 C 300 90, 315 98, 318 110\" fill=\"none\" stroke=\"var(--text)\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n      <text x=\"245\" y=\"72\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">同侧口袋区 (Pocket Float)</text>\n      <text x=\"245\" y=\"165\" font-size=\"11\" fill=\"var(--muted)\">手掌自然包住球侧 · 滞空 0.3s (绝不翻腕)</text>\n      <text x=\"380\" y=\"115\" font-size=\"11\" font-weight=\"600\" fill=\"var(--accent-text)\">→ 观察防守动向</text>\n</svg>", "pg_3": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">阶段三：双脚宽坠步与大跨度变向 (Drop & Cross)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">双脚坠地沉髋 · 球贴膝盖下方极速扫过</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <rect x=\"130\" y=\"188\" width=\"36\" height=\"12\" rx=\"4\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <rect x=\"370\" y=\"188\" width=\"36\" height=\"12\" rx=\"4\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"200\" y=\"215\" font-size=\"11\" fill=\"var(--muted)\">宽站位 75-80cm (Drop Stance)</text>\n      <line x1=\"270\" y1=\"75\" x2=\"270\" y2=\"125\" stroke=\"var(--green)\" stroke-width=\"3\" marker-end=\"url(#arr-grn)\"/>\n      <text x=\"285\" y=\"105\" font-size=\"12\" font-weight=\"700\" fill=\"var(--green-text)\">重心沉降 15cm</text>\n      <path d=\"M 370 155 Q 270 185 160 155\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"3.5\" marker-end=\"url(#arr-org)\"/>\n      <circle cx=\"160\" cy=\"155\" r=\"14\" fill=\"var(--orange)\"/>\n      <text x=\"200\" y=\"145\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">球低于膝盖 · 极速横移贴地变向</text>\n      <text x=\"60\" y=\"125\" font-size=\"11\" fill=\"var(--muted)\">另一侧手掌大力抓稳</text>\n</svg>", "pg_4": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">阶段四：实战招牌连招 (胯下 → 背后 → 犹豫步)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">胯下向前刺探 → 背后贴臀拉回 → 抬头耸肩犹豫步</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <circle cx=\"120\" cy=\"140\" r=\"15\" fill=\"var(--orange)\"/>\n      <text x=\"80\" y=\"115\" font-size=\"11\" font-weight=\"700\" fill=\"var(--text)\">① 胯下向前刺探</text>\n      <path d=\"M 135 140 C 180 170, 220 170, 260 140\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"2.5\" marker-end=\"url(#arr-acc)\"/>\n      <circle cx=\"260\" cy=\"140\" r=\"15\" fill=\"var(--orange)\"/>\n      <text x=\"220\" y=\"115\" font-size=\"11\" font-weight=\"700\" fill=\"var(--text)\">② 背后贴臀拉回</text>\n      <path d=\"M 275 140 C 320 110, 360 110, 400 135\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2.5\" marker-end=\"url(#arr-org)\"/>\n      <circle cx=\"400\" cy=\"135\" r=\"15\" fill=\"var(--orange)\"/>\n      <text x=\"360\" y=\"95\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">③ 犹豫步 (Hezi) 顿挫</text>\n      <line x1=\"400\" y1=\"120\" x2=\"400\" y2=\"65\" stroke=\"var(--green)\" stroke-width=\"2\" stroke-dasharray=\"3,3\" marker-end=\"url(#arr-grn)\"/>\n      <text x=\"415\" y=\"75\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">耸肩抬头看筐 0.5s</text>\n      <text x=\"140\" y=\"215\" font-size=\"11\" fill=\"var(--muted)\">虚实转换：骗起防守重心立刻向前爆破</text>\n</svg>", "pg_5": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">阶段五：爆发两步推球与贴地急停拉回</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">向前大步推球撕开防线 → 前脚垂直刹车钉死 → 后撤1.2米投篮空间</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <path d=\"M 80 140 Q 180 100 270 140\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"3\" marker-end=\"url(#arr-acc)\"/>\n      <text x=\"110\" y=\"95\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">前冲爆发推球 (Push Dribble)</text>\n      <line x1=\"300\" y1=\"130\" x2=\"300\" y2=\"195\" stroke=\"var(--orange)\" stroke-width=\"4\"/>\n      <circle cx=\"300\" cy=\"195\" r=\"14\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2\"/>\n      <text x=\"270\" y=\"215\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">前脚刹车钉死地面</text>\n      <path d=\"M 290 140 Q 220 110 160 140\" fill=\"none\" stroke=\"var(--green)\" stroke-width=\"3\" marker-end=\"url(#arr-grn)\"/>\n      <circle cx=\"160\" cy=\"140\" r=\"15\" fill=\"var(--green)\"/>\n      <text x=\"140\" y=\"120\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">拉回创造 1.2m 空间</text>\n      <line x1=\"320\" y1=\"100\" x2=\"320\" y2=\"160\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <text x=\"330\" y=\"135\" font-size=\"11\" fill=\"var(--muted)\">非持球手推开护球屏障</text>\n</svg>", "pg_6": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">阶段六：盲视超负荷与手感暴燃</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">剥离视觉依赖 · 左右单手极限手速 · 带着滚烫肌肉手感上场</text>\n  <rect x=\"70\" y=\"70\" width=\"160\" height=\"90\" rx=\"10\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"90\" y=\"95\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">👀 闭眼盲运模式</text>\n      <text x=\"90\" y=\"115\" font-size=\"11\" fill=\"var(--muted)\">左手高速拍球: 100次/分</text>\n      <text x=\"90\" y=\"135\" font-size=\"11\" fill=\"var(--muted)\">右手高速拍球: 120次/分</text>\n      <path d=\"M 245 115 L 295 115\" stroke=\"var(--orange)\" stroke-width=\"2.5\" marker-end=\"url(#arr-org)\"/>\n      <rect x=\"310\" y=\"70\" width=\"160\" height=\"90\" rx=\"10\" fill=\"var(--orange-soft)\" stroke=\"var(--orange)\" stroke-width=\"1.5\"/>\n      <text x=\"330\" y=\"95\" font-size=\"12\" font-weight=\"700\" fill=\"var(--orange-text)\">🔥 神经触感拉满</text>\n      <text x=\"330\" y=\"115\" font-size=\"11\" fill=\"var(--muted)\">指尖记忆激活完毕</text>\n      <text x=\"330\" y=\"135\" font-size=\"11\" font-weight=\"600\" fill=\"var(--orange-text)\">自信进入正式比赛！</text>\n      <text x=\"140\" y=\"195\" font-size=\"12\" font-weight=\"600\" fill=\"var(--text)\">“球不再是一个道具，而是你身体神经的直接延伸。”</text>\n</svg>", "1": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 1 课：写下你自己的故事</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">篮球训练核心三支柱体系</text>\n  <rect x=\"180\" y=\"60\" width=\"180\" height=\"36\" rx=\"6\" fill=\"var(--orange-soft)\" stroke=\"var(--orange)\"/>\n      <text x=\"220\" y=\"83\" font-size=\"12\" font-weight=\"700\" fill=\"var(--orange-text)\">实战决策与比赛直觉</text>\n      <rect x=\"140\" y=\"105\" width=\"260\" height=\"36\" rx=\"6\" fill=\"var(--accent-soft)\" stroke=\"var(--accent)\"/>\n      <text x=\"185\" y=\"128\" font-size=\"12\" font-weight=\"700\" fill=\"var(--accent-text)\">肌肉记忆与科学重复定型</text>\n      <rect x=\"100\" y=\"150\" width=\"340\" height=\"36\" rx=\"6\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"180\" y=\"173\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">基本功地基：站姿、对齐与球感</text>\n      <text x=\"170\" y=\"210\" font-size=\"11\" fill=\"var(--muted)\">每天练习写下一句话：“今天比昨天好在哪？”</text>\n</svg>", "2": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 2 课：投篮站姿、对齐与发力链</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">脚-膝-肘-腕 4 点垂直共面对准篮筐</text>\n  <line x1=\"30\" y1=\"205\" x2=\"510\" y2=\"205\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <line x1=\"220\" y1=\"50\" x2=\"220\" y2=\"205\" stroke=\"var(--accent)\" stroke-width=\"2\" stroke-dasharray=\"4,3\"/>\n      <circle cx=\"220\" cy=\"50\" r=\"14\" fill=\"var(--orange)\"/>\n      <text x=\"245\" y=\"55\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">出手点 (Set Point)</text>\n      <circle cx=\"220\" cy=\"100\" r=\"4\" fill=\"var(--accent)\"/>\n      <text x=\"235\" y=\"105\" font-size=\"11\" fill=\"var(--text)\">同侧手肘 90° 垂直线</text>\n      <circle cx=\"220\" cy=\"155\" r=\"4\" fill=\"var(--accent)\"/>\n      <text x=\"235\" y=\"160\" font-size=\"11\" fill=\"var(--text)\">同侧膝盖微曲内扣蓄力</text>\n      <circle cx=\"220\" cy=\"205\" r=\"4\" fill=\"var(--accent)\"/>\n      <text x=\"235\" y=\"202\" font-size=\"11\" fill=\"var(--text)\">同侧脚尖微偏 10° 对准篮筐</text>\n      <path d=\"M 220 50 Q 320 20 440 60\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2.5\" stroke-dasharray=\"3,3\" marker-end=\"url(#arr-org)\"/>\n      <circle cx=\"440\" cy=\"60\" r=\"12\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2\"/>\n      <text x=\"350\" y=\"35\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">高弧线纯后旋</text>\n</svg>", "3": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 3 课：定型投篮练习 (阶梯式进阶)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">近距离 10 中 8 才后退一步 · 以进球数计量</text>\n  <circle cx=\"270\" cy=\"60\" r=\"16\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"3\"/>\n      <rect x=\"250\" y=\"44\" width=\"40\" height=\"2\" fill=\"var(--border)\"/>\n      <text x=\"255\" y=\"32\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">篮筐中心</text>\n      <circle cx=\"270\" cy=\"95\" r=\"6\" fill=\"var(--green)\"/><text x=\"290\" y=\"100\" font-size=\"11\" fill=\"var(--text)\">1米点位: 10 进 8 (找纯后旋与手感)</text>\n      <circle cx=\"270\" cy=\"130\" r=\"6\" fill=\"var(--green)\"/><text x=\"290\" y=\"135\" font-size=\"11\" fill=\"var(--text)\">2米点位: 10 进 8 (加入下肢轻微弹跳)</text>\n      <circle cx=\"270\" cy=\"165\" r=\"6\" fill=\"var(--accent)\"/><text x=\"290\" y=\"170\" font-size=\"11\" fill=\"var(--text)\">3米点位: 10 进 8 (完整起跳发力链)</text>\n      <circle cx=\"270\" cy=\"200\" r=\"6\" fill=\"var(--orange)\"/><text x=\"290\" y=\"205\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">罚球线: 每天累计 100 进球</text>\n</svg>", "4": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 4 课：接球投篮 (Off the Catch)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">接球前预备屈膝 · 迎球上步 · 0下摆提球</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <path d=\"M 80 110 L 210 110\" stroke=\"var(--accent)\" stroke-width=\"3\" stroke-dasharray=\"4,3\" marker-end=\"url(#arr-acc)\"/>\n      <text x=\"90\" y=\"95\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">队友传球来向</text>\n      <circle cx=\"230\" cy=\"110\" r=\"15\" fill=\"var(--orange)\"/>\n      <text x=\"200\" y=\"85\" font-size=\"11\" font-weight=\"700\" fill=\"var(--text)\">胸前接球区</text>\n      <path d=\"M 230 110 L 260 50\" stroke=\"var(--orange)\" stroke-width=\"3\" marker-end=\"url(#arr-org)\"/>\n      <text x=\"270\" y=\"70\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">直线直拔出手 (不下拉球)</text>\n      <rect x=\"200\" y=\"188\" width=\"30\" height=\"12\" rx=\"4\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <rect x=\"245\" y=\"188\" width=\"30\" height=\"12\" rx=\"4\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"180\" y=\"215\" font-size=\"11\" fill=\"var(--muted)\">主动跨步迎球 (Hop/1-2 步已屈膝蓄力)</text>\n</svg>", "5": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 5 课：控球基础 (Foundations)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">低重心站姿 + 口袋悬停 + 仅用指腹控制</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <rect x=\"180\" y=\"80\" width=\"180\" height=\"85\" rx=\"10\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"200\" y=\"105\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">运动准备姿势 (Athletic Stance)</text>\n      <text x=\"200\" y=\"125\" font-size=\"11\" fill=\"var(--muted)\">• 双脚宽于肩，膝盖下压，背部挺直</text>\n      <text x=\"200\" y=\"145\" font-size=\"11\" fill=\"var(--muted)\">• 头部始终抬起，眼睛平视球场</text>\n      <circle cx=\"110\" cy=\"140\" r=\"16\" fill=\"var(--orange)\"/>\n      <text x=\"70\" y=\"175\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">单手重砸控球</text>\n      <circle cx=\"430\" cy=\"115\" r=\"16\" fill=\"var(--orange)\"/>\n      <text x=\"390\" y=\"150\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">口袋悬停 (Pocket)</text>\n</svg>", "6": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 6 课：运球投篮 上 (Dribble Pull-Up Part 1)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">运球后合球时机 (Gather) · 刹车步与垂直拔起</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <circle cx=\"130\" cy=\"165\" r=\"15\" fill=\"var(--orange)\"/>\n      <text x=\"90\" y=\"140\" font-size=\"11\" fill=\"var(--text)\">最后一次运球击地</text>\n      <path d=\"M 145 165 C 200 130, 240 100, 290 60\" stroke=\"var(--orange)\" stroke-width=\"3\" fill=\"none\" marker-end=\"url(#arr-org)\"/>\n      <circle cx=\"290\" cy=\"60\" r=\"15\" fill=\"var(--orange)\"/>\n      <text x=\"315\" y=\"65\" font-size=\"12\" font-weight=\"700\" fill=\"var(--orange-text)\">合球点 (Gather) → 垂直升起</text>\n      <line x1=\"260\" y1=\"140\" x2=\"260\" y2=\"195\" stroke=\"var(--green)\" stroke-width=\"3\"/>\n      <text x=\"270\" y=\"175\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">制动脚刹死冲力</text>\n      <text x=\"140\" y=\"215\" font-size=\"11\" fill=\"var(--muted)\">合球瞬间辅助手迅速到位，身体垂直起跳不前扑</text>\n</svg>", "7": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 7 课：控球：行进间 (On the Move)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">变速换挡 · 犹豫步 (Hezi) · 反向沉肩爆破</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <rect x=\"70\" y=\"90\" width=\"110\" height=\"50\" rx=\"8\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"85\" y=\"112\" font-size=\"11\" font-weight=\"700\" fill=\"var(--text)\">一档：中速推进</text>\n      <text x=\"85\" y=\"128\" font-size=\"10\" fill=\"var(--muted)\">运球观察防守站位</text>\n      <path d=\"M 180 115 L 230 115\" stroke=\"var(--accent)\" stroke-width=\"2.5\" marker-end=\"url(#arr-acc)\"/>\n      <rect x=\"235\" y=\"80\" width=\"130\" height=\"65\" rx=\"8\" fill=\"var(--orange-soft)\" stroke=\"var(--orange)\"/>\n      <text x=\"250\" y=\"105\" font-size=\"12\" font-weight=\"700\" fill=\"var(--orange-text)\">二档：犹豫步 (Hezi)</text>\n      <text x=\"250\" y=\"125\" font-size=\"10\" fill=\"var(--muted)\">突然减速顿挫 · 抬头看筐</text>\n      <path d=\"M 365 115 L 415 115\" stroke=\"var(--green)\" stroke-width=\"3\" marker-end=\"url(#arr-grn)\"/>\n      <rect x=\"420\" y=\"90\" width=\"100\" height=\"50\" rx=\"8\" fill=\"var(--green-soft)\" stroke=\"var(--green)\"/>\n      <text x=\"430\" y=\"112\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">三档：爆发蹬地</text>\n      <text x=\"430\" y=\"128\" font-size=\"10\" fill=\"var(--muted)\">过掉防守半个身位</text>\n</svg>", "8": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 8 课：运球投篮 下 (Dribble Pull-Up Part 2)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">变向后急停跳投 (Crossover to Pull-Up)</text>\n  <line x1=\"30\" y1=\"195\" x2=\"510\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <path d=\"M 120 160 Q 200 185 270 150\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"3\" marker-end=\"url(#arr-org)\"/>\n      <text x=\"140\" y=\"140\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">变向运球 (Cross)</text>\n      <line x1=\"270\" y1=\"130\" x2=\"270\" y2=\"195\" stroke=\"var(--accent)\" stroke-width=\"3.5\"/>\n      <text x=\"285\" y=\"175\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">急刹站稳 (Stop)</text>\n      <line x1=\"270\" y1=\"120\" x2=\"270\" y2=\"55\" stroke=\"var(--green)\" stroke-width=\"3\" marker-end=\"url(#arr-grn)\"/>\n      <circle cx=\"270\" cy=\"55\" r=\"14\" fill=\"var(--orange)\"/>\n      <text x=\"295\" y=\"60\" font-size=\"12\" font-weight=\"700\" fill=\"var(--green-text)\">垂直拔起 (Pop Up)</text>\n      <text x=\"130\" y=\"215\" font-size=\"11\" fill=\"var(--muted)\">变向打破横向防守平衡，急停将横向惯性完全锁死为垂直弹跳</text>\n</svg>", "9": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 9 课：创造空间，摆脱防守 (Creating Space)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">刺探步威胁圈 + 后撤步 (Stepback) 空间</text>\n  <circle cx=\"180\" cy=\"130\" r=\"45\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\"/>\n      <text x=\"140\" y=\"125\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">刺探步威胁圈</text>\n      <text x=\"130\" y=\"142\" font-size=\"10\" fill=\"var(--muted)\">刺探下扎 · 压迫防守</text>\n      <path d=\"M 230 130 L 350 130\" stroke=\"var(--accent)\" stroke-width=\"3\" marker-end=\"url(#arr-acc)\"/>\n      <text x=\"245\" y=\"115\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">后撤步 Stepback (1.2m)</text>\n      <circle cx=\"380\" cy=\"130\" r=\"16\" fill=\"var(--orange)\"/>\n      <text x=\"355\" y=\"165\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">安全出手窗</text>\n      <text x=\"140\" y=\"205\" font-size=\"11\" fill=\"var(--muted)\">前脚全力反推地面，非投篮手侧肩膀护球，拉开足够空间直接出手</text>\n</svg>", "10": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 10 课：录像课：击败防守者 (Film Session)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">识别防守重心转移特征 · 零秒决策</text>\n  <rect x=\"70\" y=\"70\" width=\"180\" height=\"90\" rx=\"8\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"85\" y=\"95\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">防守特征 A: 后脚沉死</text>\n      <text x=\"85\" y=\"115\" font-size=\"11\" fill=\"var(--muted)\">• 对方重心向后坐，怕你突破</text>\n      <text x=\"85\" y=\"135\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">→ 决策: 原地拔起跳投</text>\n      <rect x=\"290\" y=\"70\" width=\"180\" height=\"90\" rx=\"8\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"305\" y=\"95\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">防守特征 B: 重心前倾扑防</text>\n      <text x=\"305\" y=\"115\" font-size=\"11\" fill=\"var(--muted)\">• 对方急躁上抢、重心前移</text>\n      <text x=\"305\" y=\"135\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">→ 决策: 降重心抹过其肩膀</text>\n      <text x=\"150\" y=\"190\" font-size=\"11\" fill=\"var(--muted)\">读出防守人的第一脚重心，永远走对方最难受的反方向</text>\n</svg>", "11": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 11 课：挡拆战术 (Pick and Roll)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">肩过肩蹭紧掩护人 · 阅读大个防守站位</text>\n  <rect x=\"230\" y=\"80\" width=\"35\" height=\"55\" rx=\"6\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"215\" y=\"70\" font-size=\"11\" font-weight=\"700\" fill=\"var(--text)\">掩护队友 (Screener)</text>\n      <path d=\"M 120 150 C 180 150, 220 135, 270 120\" stroke=\"var(--orange)\" stroke-width=\"3.5\" fill=\"none\" marker-end=\"url(#arr-org)\"/>\n      <text x=\"100\" y=\"135\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">持球人紧贴切入</text>\n      <text x=\"270\" y=\"105\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">肩过肩 (Shoulder-to-Hip)</text>\n      <text x=\"120\" y=\"195\" font-size=\"11\" fill=\"var(--muted)\">走掩护时肩膀几乎蹭到队友髋部，绝对不给原防守人穿缝挤过的空间</text>\n</svg>", "12": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 12 课：录像课：挡拆决策树</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">根据防守沉退 / 夹击 / 换防选择最优终结</text>\n  <circle cx=\"100\" cy=\"115\" r=\"24\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"80\" y=\"120\" font-size=\"11\" font-weight=\"700\" fill=\"var(--text)\">借掩护</text>\n      <path d=\"M 125 100 L 220 70\" stroke=\"var(--orange)\" stroke-width=\"2.5\" marker-end=\"url(#arr-org)\"/>\n      <text x=\"235\" y=\"65\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">防守沉退 (Drop) → 直接干拔跳投</text>\n      <path d=\"M 125 115 L 220 115\" stroke=\"var(--accent)\" stroke-width=\"2.5\" marker-end=\"url(#arr-acc)\"/>\n      <text x=\"235\" y=\"118\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">防守夹击 (Trap) → 击地传顺下中锋</text>\n      <path d=\"M 125 130 L 220 160\" stroke=\"var(--green)\" stroke-width=\"2.5\" marker-end=\"url(#arr-grn)\"/>\n      <text x=\"235\" y=\"165\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">防守换防 (Switch) → 拉开单打小打大</text>\n</svg>", "13": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 13 课：篮下终结 (Finishing at the Rim)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">柔和高抛投 (Floater) · 同手同脚反节奏对抗</text>\n  <line x1=\"420\" y1=\"40\" x2=\"420\" y2=\"195\" stroke=\"var(--border)\" stroke-width=\"2\"/>\n      <circle cx=\"420\" cy=\"50\" r=\"14\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"3\"/>\n      <text x=\"390\" y=\"30\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">篮筐</text>\n      <rect x=\"360\" y=\"100\" width=\"30\" height=\"70\" rx=\"4\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"345\" y=\"90\" font-size=\"10\" fill=\"var(--muted)\">护筐高大中锋</text>\n      <path d=\"M 140 165 C 220 140, 280 20, 410 50\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"3\" stroke-dasharray=\"3,3\" marker-end=\"url(#arr-org)\"/>\n      <circle cx=\"280\" cy=\"45\" r=\"14\" fill=\"var(--orange)\"/>\n      <text x=\"230\" y=\"30\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">高弧线小抛投 (Floater)</text>\n      <text x=\"70\" y=\"185\" font-size=\"11\" fill=\"var(--muted)\">禁区边缘急停出手 · 食指中指柔和送出 · 越过封盖巨掌</text>\n</svg>", "14": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 14 课：无球掩护跑位 (Off-Ball Screens)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">Flare 外弹 · Curl 卷切 · Fade 后撤</text>\n  <circle cx=\"270\" cy=\"115\" r=\"18\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"250\" y=\"119\" font-size=\"10\" font-weight=\"700\" fill=\"var(--text)\">掩护点</text>\n      <path d=\"M 140 170 C 180 170, 240 130, 270 70\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2.5\" marker-end=\"url(#arr-org)\"/>\n      <text x=\"280\" y=\"65\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">① Curl 卷切直奔空篮</text>\n      <path d=\"M 140 170 C 200 170, 280 135, 380 90\" fill=\"none\" stroke=\"var(--accent)\" stroke-width=\"2.5\" marker-end=\"url(#arr-acc)\"/>\n      <text x=\"390\" y=\"95\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">② Flare 外弹三分空位</text>\n      <path d=\"M 140 170 C 180 170, 230 160, 310 180\" fill=\"none\" stroke=\"var(--green)\" stroke-width=\"2.5\" marker-end=\"url(#arr-grn)\"/>\n      <text x=\"320\" y=\"185\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">③ Fade 顺势后撤接球</text>\n</svg>", "15": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 15 课：控球：超负荷训练 (Overload Training)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">单手运篮球 + 单手抛接网球 · 手眼注意力极度失衡</text>\n  <circle cx=\"160\" cy=\"145\" r=\"18\" fill=\"var(--orange)\"/>\n      <text x=\"110\" y=\"180\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">右手重力拍篮球</text>\n      <path d=\"M 330 145 C 330 80, 370 80, 370 145\" fill=\"none\" stroke=\"var(--green)\" stroke-width=\"3\" stroke-dasharray=\"3,3\" marker-end=\"url(#arr-grn)\"/>\n      <circle cx=\"350\" cy=\"85\" r=\"10\" fill=\"var(--green)\"/>\n      <text x=\"315\" y=\"65\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">左手高抛接网球 (Tennis Ball)</text>\n      <text x=\"120\" y=\"210\" font-size=\"11\" fill=\"var(--muted)\">强迫大脑将视觉全部留给网球，篮球控球完全交给指尖下意识反应</text>\n</svg>", "16": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 16 课：赛前准备 (Pre-Game Routine)</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">20 分钟固定仪式感 · 将神经与手感推向沸腾</text>\n  <rect x=\"50\" y=\"90\" width=\"80\" height=\"45\" rx=\"6\" fill=\"var(--surface2)\" stroke=\"var(--border)\"/>\n      <text x=\"60\" y=\"110\" font-size=\"11\" font-weight=\"700\" fill=\"var(--text)\">0-4 分钟</text>\n      <text x=\"60\" y=\"125\" font-size=\"10\" fill=\"var(--muted)\">神经唤醒</text>\n      <rect x=\"140\" y=\"90\" width=\"80\" height=\"45\" rx=\"6\" fill=\"var(--orange-soft)\" stroke=\"var(--orange)\"/>\n      <text x=\"150\" y=\"110\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">4-9 分钟</text>\n      <text x=\"150\" y=\"125\" font-size=\"10\" fill=\"var(--muted)\">口袋悬停</text>\n      <rect x=\"230\" y=\"90\" width=\"80\" height=\"45\" rx=\"6\" fill=\"var(--accent-soft)\" stroke=\"var(--accent)\"/>\n      <text x=\"240\" y=\"110\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">9-14 分钟</text>\n      <text x=\"240\" y=\"125\" font-size=\"10\" fill=\"var(--muted)\">坠步变向</text>\n      <rect x=\"320\" y=\"90\" width=\"80\" height=\"45\" rx=\"6\" fill=\"var(--green-soft)\" stroke=\"var(--green)\"/>\n      <text x=\"330\" y=\"110\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">14-18 分钟</text>\n      <text x=\"330\" y=\"125\" font-size=\"10\" fill=\"var(--muted)\">变速犹豫步</text>\n      <rect x=\"410\" y=\"90\" width=\"80\" height=\"45\" rx=\"6\" fill=\"var(--orange)\"/>\n      <text x=\"420\" y=\"110\" font-size=\"11\" font-weight=\"700\" fill=\"#fff\">18-20 分钟</text>\n      <text x=\"420\" y=\"125\" font-size=\"10\" fill=\"#fff\">盲视超负荷</text>\n      <text x=\"140\" y=\"180\" font-size=\"12\" font-weight=\"600\" fill=\"var(--text)\">“赛前做一模一样的流程，让身体知道：比赛已经开始了。”</text>\n</svg>", "17": "<svg viewBox=\"0 0 540 240\" width=\"100%\" height=\"auto\" xmlns=\"http://www.w3.org/2000/svg\" style=\"background:var(--soft);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;user-select:none;display:block;\">\n  <defs>\n    <marker id=\"arr-acc\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--accent)\" />\n    </marker>\n    <marker id=\"arr-org\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--orange)\" />\n    </marker>\n    <marker id=\"arr-grn\" viewBox=\"0 0 10 10\" refX=\"6\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1.5 L 8 5 L 0 8.5 z\" fill=\"var(--green)\" />\n    </marker>\n    <pattern id=\"grid-pat\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"var(--border)\" stroke-width=\"0.5\" stroke-opacity=\"0.4\"/>\n    </pattern>\n  </defs>\n  <rect width=\"100%\" height=\"100%\" fill=\"url(#grid-pat)\"/>\n  <rect x=\"18\" y=\"14\" width=\"4\" height=\"18\" rx=\"2\" fill=\"var(--orange)\"/>\n  <text x=\"28\" y=\"26\" font-size=\"13\" font-weight=\"700\" fill=\"var(--text)\">第 17 课：结语：追求完美的旅程</text>\n  <text x=\"28\" y=\"42\" font-size=\"11\" fill=\"var(--muted)\">刻意练习反馈飞轮：微动作拆解 → 比赛检验 → 复盘进阶</text>\n  <circle cx=\"270\" cy=\"120\" r=\"60\" fill=\"none\" stroke=\"var(--orange)\" stroke-width=\"2.5\" stroke-dasharray=\"6,4\"/>\n      <circle cx=\"270\" cy=\"60\" r=\"14\" fill=\"var(--accent)\"/>\n      <text x=\"210\" y=\"45\" font-size=\"11\" font-weight=\"700\" fill=\"var(--accent-text)\">1. 拆解单一微动作</text>\n      <circle cx=\"330\" cy=\"120\" r=\"14\" fill=\"var(--green)\"/>\n      <text x=\"350\" y=\"125\" font-size=\"11\" font-weight=\"700\" fill=\"var(--green-text)\">2. 赛场真实对抗检验</text>\n      <circle cx=\"270\" cy=\"180\" r=\"14\" fill=\"var(--orange)\"/>\n      <text x=\"210\" y=\"205\" font-size=\"11\" font-weight=\"700\" fill=\"var(--orange-text)\">3. 写下一句复盘反思</text>\n      <text x=\"150\" y=\"125\" font-size=\"12\" font-weight=\"700\" fill=\"var(--text)\">持续飞轮进化</text>\n</svg>"};
+const CUES = {"1": [{"tag": "先定目标", "desc": "清楚这阶段最想提升哪一项技术，每天进步1%"}, {"tag": "积累自信", "desc": "自信来自日复一日的重复训练，非他人评价"}], "2": [{"tag": "脚膝肘腕4点共面", "desc": "同侧脚尖、膝盖、肘部、手腕垂直对齐对准篮筐中心"}, {"tag": "掌心留空指腹触球", "desc": "用指根与指腹抓球，掌心留出一指缝隙，辅助手不发力推球"}, {"tag": "下肢蓄力同步起球", "desc": "屈膝屈髋下沉，起跳发力与提球上举动作同步无滞塞"}], "3": [{"tag": "以进球计数", "desc": "严格按“进球数”而不是“出手数”考核，保持高质量肌肉记忆"}, {"tag": "由近及远阶梯", "desc": "篮下1米 10中8 才能退到2米，建立完美正向手感反馈"}, {"tag": "记录投丢特征", "desc": "偏左偏右是对齐问题，偏长偏短是腿部力量问题"}], "4": [{"tag": "接球前先屈膝", "desc": "双手胸前预先给出传球目标，球到手前重心已下沉完成蓄力"}, {"tag": "迎球主动跨步", "desc": "主动上步抓球（Hop或1-2步），绝不在原地干等球来"}, {"tag": "短路线直接上举", "desc": "球到手后走最短直线进入出手点，绝不绕圈下拉摆动"}], "5": [{"tag": "运动降重心站姿", "desc": "双脚宽分，胸膛挺起，膝盖深曲，重心随时准备弹射爆发"}, {"tag": "指腹控球防掏球", "desc": "手腕柔软下压，球始终在膝盖至腰部高度，不看球控球"}, {"tag": "同侧口袋悬停", "desc": "大力砸地后顺势拉入腰侧口袋，获得0.3秒观察防守时机"}], "6": [{"tag": "合球时机 Gather", "desc": "最后一次运球击地瞬间，脚步调整到起跳站位，无缝衔接提球"}, {"tag": "非持球手快速锁定", "desc": "合球瞬间辅助手迅速到位支撑，避免运球晃动影响出手"}, {"tag": "起跳重心垂直", "desc": "刹车后垂直向上发力，不向前扑、不向后倒"}], "7": [{"tag": "犹豫步顿挫 Hezi", "desc": "行进间突然耸肩抬头假装投篮，逼迫防守者直立重心"}, {"tag": "反手变向蹬地", "desc": "防守重心一变，立刻向前外侧沉肩蹬地爆破"}, {"tag": "节奏变速差", "desc": "慢-快-慢-快换挡，不靠绝对极速，靠节奏反差过人"}], "8": [{"tag": "减速脚如钉地", "desc": "向前冲刺时前脚重重踩实地面化解水平冲力，转化为垂直起跳"}, {"tag": "急停不减出手速度", "desc": "脚步急停急刹，但上肢起球出手动作依然保持顺畅稳定"}, {"tag": "中距离杀手", "desc": "突破一步后的急停跳投是小个后卫最具杀伤力的得分武器"}], "9": [{"tag": "刺探步试探", "desc": "非轴心脚向前下扎刺探，观察防守脚步与防守距离"}, {"tag": "后撤步借力蹬地", "desc": "前脚大力反推地面，向后滑动弹开 1 米以上投篮空间"}, {"tag": "肩膀护球屏障", "desc": "后撤时用非投篮侧肩膀护住球，拉开空间直接升起出手"}], "10": [{"tag": "抓防守后脚重心", "desc": "一旦防守者后脚受力沉降，立刻在原地拔起跳投"}, {"tag": "抓防守前倾扑防", "desc": "防守重心前倾扑球，立刻降重心变向压过其肩膀突破"}, {"tag": "空间足够即刻出手", "desc": "创造出半个身位的投篮窗就果断出手，犹豫则空间消失"}], "11": [{"tag": "贴紧掩护肩过肩", "desc": "持球走掩护时肩膀几乎蹭到掩护队友的髋部，不给防守钻缝机会"}, {"tag": "掩护前反向假动作", "desc": "先朝反方向刺探一步，把防守人扎进掩护人的身躯上"}, {"tag": "抬头阅读防守策略", "desc": "观察对方是下沉（Drop）、换防（Switch）还是夹击（Trap）"}], "12": [{"tag": "遇包夹瞬间出球", "desc": "只要防守大个上前夹击，立刻球分弱侧或顺下空切队友"}, {"tag": "遇沉退果断拔投", "desc": "大个子不敢上前在罚球线退守，借掩护直接急停三分出手"}, {"tag": "中距离小抛投", "desc": "如果大个延误后回退，在禁区前沿用抛投打防守盲区"}], "13": [{"tag": "柔和高弧度抛投", "desc": "面对封盖大个，单脚或双脚刹车，靠食指中指柔和送出高弧线"}, {"tag": "同手同脚反节奏", "desc": "左脚起跳右手抛投（反手反脚），打破护筐大个的盖帽起跳预判"}, {"tag": "身体对抗找对抗", "desc": "主动用非起跳侧躯干寻找轻微身体接触，延缓防守起跳高度"}], "14": [{"tag": "Flare 外弹", "desc": "持球人在右，从左侧借掩护向底角或侧翼外弹拉出大空位"}, {"tag": "Curl 卷切", "desc": "如果防守人在掩护后狂追，顺势绕掩护卷切直奔篮下空篮"}, {"tag": "Fade 后撤", "desc": "防守人提前挤过掩护抄近道，立刻急刹向后退一步接球投篮"}], "15": [{"tag": "网球抛接手眼失衡", "desc": "单手持续运篮球，另一手不断上下抛接网球，逼迫视觉离开篮球"}, {"tag": "双球非对称运球", "desc": "两只手同时运球，一手高运一手低运，或者两手交替节奏错开"}, {"tag": "突破控球舒适区", "desc": "在训练中多失误多掉球，才能真正拓展大脑的神经控制带宽"}], "16": [{"tag": "20分钟赛前激活", "desc": "按照“指尖神经 -> 口袋悬停 -> 变向连招 -> 变速顿挫 -> 超负荷盲运”渐进激活"}, {"tag": "固定仪式建立自信", "desc": "每次正式打球前做一模一样的 20 分钟流程，给大脑输入稳定信号"}, {"tag": "心流状态进入比赛", "desc": "完成流程后带着滚烫的手指记忆直接走进球场"}], "17": [{"tag": "刻意练习微动作", "desc": "把每个动作拆到最小单元（一个转腕、一次沉髋），逐一击破"}, {"tag": "以比赛为检验靶", "desc": "训练再好看不如比赛用出来一次，根据实战录像反向修正练习"}, {"tag": "写下今日好在哪", "desc": "每次训练结束用一句话复盘，日积月累形成强大的技术复利"}]};
+const PREGAME_DRILLS = [{"id": 1, "name": "超低空重砸与指尖高频点球", "en": "Low Pound & Finger-Tip Rapid Tap", "dur": 180, "tag": "00:00 - 03:00 (3分钟)", "phase": "阶段一：极限神经唤醒", "diagramKey": "pg_1", "points": ["双脚呈宽运动站姿，屈膝下压，重心沉到膝盖以下。", "在离地面 10-15cm 极限超低空，仅靠手腕和指腹做高频大力拍击。", "右单手 60s → 左单手 60s → 体前双手飞速指尖交替拨球 60s。"], "cues": [{"tag": "只用指腹", "desc": "手心绝对留空，像弹钢琴一样用指尖神经末梢咬住球。"}, {"tag": "视线平视", "desc": "眼睛死死平视正前方，禁止低头看球，完全依靠听觉和触觉感知。"}, {"tag": "拍击声清脆", "desc": "听到地板发出密集的“啪啪啪”脆响，手腕像通电一样快速高频震颤。"}], "mistake": "切忌弯腰驼背低头，或用手掌掌心死拍，那样无法激活指尖神经末梢。"}, {"id": 2, "name": "重力下砸与同侧口袋悬停", "en": "Pound to Pocket Floating", "dur": 240, "tag": "03:00 - 07:00 (4分钟)", "phase": "阶段二：深度控制与口袋滞空", "diagramKey": "pg_2", "points": ["单手腰部高度大力砸向地面，借助球的高反弹力。", "回弹瞬间手掌自然包裹球侧，顺势向后上方拉入腰侧“裤袋”（Pocket）位置。", "体会 0.3 秒的无重力浮空感（Floating），右单手 120s → 左单手 120s。"], "cues": [{"tag": "大力砸地", "desc": "下砸力量越大，反弹回口袋的借力感和滞空感越充沛。"}, {"tag": "口袋悬停", "desc": "手掌置于球的外侧斜上方，绝对不翻腕违例，球在口袋像悬浮在空中。"}, {"tag": "阅读防守", "desc": "口袋悬停的这 0.3 秒，就是你在比赛里看清防守人扑防还是后退的黄金观察窗。"}], "mistake": "手心托到球底部（携带球/翻腕翻底违例），必须始终保持手掌在球上方或侧外方包裹。"}, {"id": 3, "name": "双脚宽坠步与大跨度变向", "en": "Drop Stance & Wide Crossover", "dur": 240, "tag": "07:00 - 11:00 (4分钟)", "phase": "阶段三：破坏防守重心的击破步", "diagramKey": "pg_3", "points": ["从站立悬停状态，突然“啪”一声双脚宽分坠地（Drop 瞬间），重心瞬间下沉 15cm。", "球贴紧膝盖下方，以极快的速度横向扫过身体，由另一侧手大力接稳。", "连续快速左右交替变向，每次变向伴随肩膀的虚晃沉降。"], "cues": [{"tag": "双脚坠地", "desc": "听到双脚同时擦地砸地的沉闷声音，下肢瞬间吃住地面摩擦力。"}, {"tag": "球不过膝", "desc": "变向球的最高弹起点绝对不能超过膝盖，越贴地，防守越掏不到。"}, {"tag": "大跨度横移", "desc": "球横移幅度拉满 75-80cm，迫使防守人横移失衡。"}], "mistake": "变向时身体直立起来。记住：“变向的高度决定你过人的成败，永远在最低点过人”。"}, {"id": 4, "name": "实战连招：胯下-背后-迟疑步", "en": "Between-the-Legs to Behind & Hezi", "dur": 240, "tag": "11:00 - 15:00 (4分钟)", "phase": "阶段四：库里招牌变速三连动", "diagramKey": "pg_4", "points": ["① 胯下变向：向前刺探一步，球从两腿之间快速穿过。", "② 背后拉回：顺势将球贴臀部向后快速绕拉，封死防守人掏球线路。", "③ 迟疑步（Hezi）：合球前突然轻微耸肩、抬头看筐 0.5 秒，制造投篮假象。"], "cues": [{"tag": "背后贴臀", "desc": "球贴着屁股下沿迅速滑过，动作紧凑干净，绝不脱离身体圆柱体。"}, {"tag": "抬头看筐", "desc": "迟疑步的精髓在于眼神！眼睛死死盯一眼篮筐，骗起防守人重心。"}, {"tag": "动静反差", "desc": "胯下与背后极快，迟疑步极静，一旦防守直立，立刻弹射启动。"}], "mistake": "三招之间节奏完全一样。必须要有“快-快-顿-炸”的剧烈节奏差。"}, {"id": 5, "name": "爆发两步推球与贴地急停拉回", "en": "Explosive Push Dribble & Snatch Back", "dur": 180, "tag": "15:00 - 18:00 (3分钟)", "phase": "阶段五：撕裂防线与创造投篮窗", "diagramKey": "pg_5", "points": ["向前大步爆发推球（Push Dribble）突进 2 步，模拟攻入防守人身侧。", "前脚像钉子一样重重踩实地面化解冲力（垂直刹车制动）。", "借力将球强力向后快速拉回（Snatch Back），非持球手推开护球屏障，瞬间创造 1.2m 空间。"], "cues": [{"tag": "大步推球", "desc": "突破第 1 步一定要推得远，让防守人必须全速向后狂退。"}, {"tag": "前脚钉死", "desc": "前脚掌发力刹车，把水平冲力瞬间消化在地面。"}, {"tag": "拉回即出手窗", "desc": "球拉回到口袋或投篮准备点，身体处于随时拔起投篮的绝对平衡态。"}], "mistake": "刹车时身体前倾倒下。必须保持核心收紧，刹车后躯干依然挺拔稳定。"}, {"id": 6, "name": "盲视超负荷与手感暴燃", "en": "Blind Speed Overload / Burnout", "dur": 120, "tag": "18:00 - 20:00 (2分钟)", "phase": "阶段六：神经巅峰激活与自信上场", "diagramKey": "pg_6", "points": ["最后 2 分钟进入终极神经超频模式：闭上双眼，或者双眼紧盯球场最远处篮网。", "右手超快速极速击地 30s → 左手 30s → 盲视极限变向 60s。", "如果有网球，此时可进行单手运球+单手抛接网球。把视觉注意力完全剥离篮球！"], "cues": [{"tag": "完全闭眼", "desc": "不用眼睛看球，仅凭手掌末梢神经感知球的每一个细微回弹。"}, {"tag": "小臂微酸", "desc": "高强度极限拍击让小臂与手指肌肉充分充血，手感温度瞬间飙升。"}, {"tag": "自信上膛", "desc": "完成最后一拍，深呼吸，球已是身体一部分，带着滚烫手感直接走上赛场！"}], "mistake": "因为怕失误而放慢速度。超负荷训练必须逼出失误，球掉出去了立刻捡回继续，不要降速！"}];
+
+/* ---------- State (v2 with Photos & Pregame Logs) ---------- */
+const KEY = 'curryMC.v2';
+let S = { watched:{}, practiced:{}, notes:{}, photos:{}, pregameLogs:[] };
+try {
+  const raw = localStorage.getItem(KEY) || localStorage.getItem('curryMC.v1');
+  if(raw) {
+    const parsed = JSON.parse(raw);
+    S = Object.assign(S, parsed);
+  }
+  if(!S.photos) S.photos = {};
+  if(!S.pregameLogs) S.pregameLogs = [];
+} catch(e){}
 const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} };
 
 const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const toSec = d => { const [m,s] = d.split(':').map(Number); return m*60+s; };
-const total = L.reduce((a,l)=>a+toSec(l.dur),0);
-$('#sumMeta').textContent = `17 节 · ${Math.floor(total/3600)} 小时 ${Math.floor(total%3600/60)} 分`;
+const toSec = s => { const [m, sec] = s.split(':').map(Number); return m * 60 + sec; };
 
-let filter = 'all', query = '', current = 1;
+let current = 1;
+let filterMod = null;
+let query = '';
 
+/* ---------- Web Audio Synthesizer for Timer ---------- */
+let audioCtx = null;
+let soundEnabled = true;
+
+function playTone(freq, dur, type='sine') {
+  if(!soundEnabled) return;
+  try {
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + dur);
+  } catch(e){}
+}
+
+function playBeep() { playTone(580, 0.08, 'sine'); }
+function playChime() {
+  playTone(523.25, 0.12, 'triangle');
+  setTimeout(() => playTone(659.25, 0.12, 'triangle'), 110);
+  setTimeout(() => playTone(783.99, 0.25, 'triangle'), 220);
+}
+
+/* ---------- Progress Calculation ---------- */
 function progress(){
+  const total = L.length;
   const w = Object.values(S.watched).filter(Boolean).length;
   const p = Object.values(S.practiced).filter(Boolean).length;
-  $('#cW').textContent = w; $('#cP').textContent = p;
-  $('#bW').style.width = (w/17*100)+'%'; $('#bP').style.width = (p/17*100)+'%';
+  $('#bw').style.width = (w / total * 100) + '%';
+  $('#bp').style.width = (p / total * 100) + '%';
+  $('#pw').textContent = w + '/' + total;
+  $('#pp').textContent = p + '/' + total;
 }
 
+/* ---------- Chips & Course List ---------- */
 function renderChips(){
-  const opts = [['all','全部']].concat(Object.entries(MODS).map(([k,v])=>[k,v.name]));
-  $('#chips').innerHTML = opts.map(([k,n])=>`<button class="chip" data-f="${k}" aria-pressed="${filter===k}">${n}</button>`).join('');
+  const wrap = $('#chips');
+  const mods = Object.keys(MODS);
+  wrap.innerHTML = `
+    <button class="chip" data-mod="all" aria-pressed="${!filterMod}">全部 (${L.length})</button>
+    ${mods.map(m => {
+      const count = L.filter(l => l.mod === m).length;
+      return `<button class="chip" data-mod="${m}" aria-pressed="${filterMod === m}">${MODS[m].name} (${count})</button>`;
+    }).join('')}
+  `;
+  wrap.onclick = e => {
+    const b = e.target.closest('.chip');
+    if(!b) return;
+    const m = b.dataset.mod;
+    filterMod = (m === 'all' || m === filterMod) ? null : m;
+    renderChips();
+    renderList();
+  };
 }
 
-function matches(l){
-  if(filter!=='all' && l.mod!==filter) return false;
-  if(!query) return true;
-  const hay = [l.cn,l.en,l.goal,MODS[l.mod].name,...l.topics,...l.points,...l.drills.flat(),S.notes[l.n]||''].join(' ').toLowerCase();
-  return hay.includes(query.toLowerCase());
+function getFiltered(){
+  const q = query.trim().toLowerCase();
+  return L.filter(l => {
+    if(filterMod && l.mod !== filterMod) return false;
+    if(!q) return true;
+    const hay = (l.cn + ' ' + l.en + ' ' + l.goal + ' ' + l.points.join(' ') + ' ' + l.topics.join(' ') + ' ' + l.drills.map(d=>d[0]).join(' ')).toLowerCase();
+    return hay.includes(q);
+  });
 }
 
 function renderList(){
-  const items = L.filter(matches);
-  $('#list').innerHTML = items.length ? items.map(l=>`
-    <li><button class="item" data-n="${l.n}" aria-current="${l.n===current}">
-      <span class="num">${l.n}</span>
-      <span class="it-main"><span class="it-title">${esc(l.cn)}</span><span class="it-meta" style="display:block">${MODS[l.mod].name} · ${l.dur}</span></span>
-      <span class="marks">${S.watched[l.n]?'<span class="mk w">已看</span>':''}${S.practiced[l.n]?'<span class="mk p">已练</span>':''}</span>
-    </button></li>`).join('') : '<li class="empty">没有找到匹配的课，换个关键词试试。</li>';
+  const items = getFiltered();
+  const ul = $('#list');
+  if(!items.length){
+    ul.innerHTML = '<li class="empty">没有找到相关课程</li>';
+    return;
+  }
+  ul.innerHTML = items.map(l => `
+    <li>
+      <button class="item" data-n="${l.n}" aria-current="${l.n === current}">
+        <span class="num">${l.n}</span>
+        <div class="it-main">
+          <div class="it-title">${esc(l.cn)}</div>
+          <div class="it-meta">${MODS[l.mod].name} · ${l.dur}</div>
+        </div>
+        <div class="marks">
+          ${S.watched[l.n] ? '<span class="mk w" title="已看完">看</span>' : ''}
+          ${S.practiced[l.n] ? '<span class="mk p" title="已练过">练</span>' : ''}
+        </div>
+      </button>
+    </li>
+  `).join('');
+  ul.onclick = e => {
+    const b = e.target.closest('.item');
+    if(!b) return;
+    location.hash = '/lesson/' + b.dataset.n;
+  };
 }
 
+/* ---------- Detail View with SVG Diagrams & Photo Paste ---------- */
 function renderDetail(){
-  const l = L.find(x=>x.n===current);
-  const prev = L.find(x=>x.n===current-1), next = L.find(x=>x.n===current+1);
+  const l = L.find(x => x.n === current);
+  if(!l) return;
+  const prev = L.find(x => x.n === current - 1), next = L.find(x => x.n === current + 1);
+  const diag = DIAGRAMS[String(l.n)] || '';
+  const cues = CUES[l.n] || [];
+  const photos = S.photos[l.n] || [];
+
   $('#detail').innerHTML = `
     <button class="back" id="backBtn">← 返回课程列表</button>
-    <div class="eyebrow"><span>第 ${l.n} 课</span><span class="tag">${MODS[l.mod].name}</span><span>${l.dur}</span></div>
+    <div class="eyebrow">
+      <span>第 ${l.n} 课</span>
+      <span class="tag">${MODS[l.mod].name}</span>
+      <span>${l.dur}</span>
+    </div>
     <h2>${esc(l.cn)}</h2>
     <p class="en">${esc(l.en)}</p>
+    
     <div class="actions">
-      <button class="btn ${S.watched[l.n]?'on-w':''}" data-toggle="watched" aria-pressed="${!!S.watched[l.n]}"><span class="box">${S.watched[l.n]?'✓':''}</span>已看完</button>
-      <button class="btn ${S.practiced[l.n]?'on-p':''}" data-toggle="practiced" aria-pressed="${!!S.practiced[l.n]}"><span class="box">${S.practiced[l.n]?'✓':''}</span>已练过</button>
-      <a class="btn" href="${BASE+l.slug}" target="_blank" rel="noopener">去官方课程观看 ↗</a>
+      <button class="btn ${S.watched[l.n] ? 'on-w' : ''}" data-toggle="watched" aria-pressed="${!S.watched[l.n]}">
+        <span class="box">${S.watched[l.n] ? '✓' : ''}</span>已看完
+      </button>
+      <button class="btn ${S.practiced[l.n] ? 'on-p' : ''}" data-toggle="practiced" aria-pressed="${!S.practiced[l.n]}">
+        <span class="box">${S.practiced[l.n] ? '✓' : ''}</span>已练过
+      </button>
+      <a class="btn" href="${BASE + l.slug}" target="_blank" rel="noopener">去官方课程观看 ↗</a>
     </div>
+
     <div class="goal"><small>本课目标</small><p>${esc(l.goal)}</p></div>
-    <section class="block"><h3>官方章节要点 <span>官网公开标题</span></h3>
+
+    <!-- Visual Action Guide Section -->
+    <section class="block">
+      <h3>动作图解与视觉指导 <span>库里动作力学与视觉信号</span></h3>
+      <div class="visual-card">
+        <div class="svg-diagram-wrap" id="detailDiagramWrap">
+          ${diag}
+        </div>
+        ${cues.length ? `
+          <div class="visual-cues">
+            <div class="cues-title">⚡️ 核心体感信号（视觉与身体记忆）</div>
+            <div class="cues-grid">
+              ${cues.map(c => `
+                <div class="cue-item">
+                  <span class="cue-tag">${esc(c.tag)}</span>
+                  <p>${esc(c.desc)}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>
+
+      <!-- User Photos & Screenshots Area -->
+      <div class="user-photos-section">
+        <div class="user-photos-header">
+          <h4>📷 我的动作截图 / 示范图 <span>支持点击上传，或在页面直接按 <b>Cmd+V / Ctrl+V</b> 粘贴截图</span></h4>
+          <label class="btn" style="cursor:pointer">
+            <input type="file" accept="image/*" id="photoFileInput" style="display:none">
+            + 上传图片
+          </label>
+        </div>
+        <div class="photos-grid" id="photosGrid">
+          ${photos.map((p, idx) => `
+            <div class="photo-slot" data-idx="${idx}">
+              <img src="${p}" alt="动作截图">
+              <button class="photo-del" data-del="${idx}" title="删除图片">×</button>
+            </div>
+          `).join('')}
+          <label class="photo-dropzone">
+            <input type="file" accept="image/*" class="inline-file-input" style="display:none">
+            <span>📷 点击或粘贴</span>
+            <span style="font-size:10px;opacity:.7">JPG/PNG/GIF</span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>官方章节要点 <span>官网公开标题</span></h3>
       ${l.topics.length ? `<ul class="topics">${l.topics.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>` : '<p style="margin:0;color:var(--muted)">官网没有公开本课的章节标题，看课时可以在下方笔记里自己补上。</p>'}
     </section>
-    <section class="block"><h3>训练要点 <span>学习笔记，以视频为准</span></h3>
+
+    <section class="block">
+      <h3>训练要点 <span>学习笔记，以视频为准</span></h3>
       <ul class="points">${l.points.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
     </section>
-    <section class="block"><h3>练习处方</h3>
-      <table class="drills"><thead><tr><th>练习</th><th>量</th></tr></thead>
-      <tbody>${l.drills.map(d=>`<tr><td>${esc(d[0])}</td><td>${esc(d[1])}</td></tr>`).join('')}</tbody></table>
+
+    <section class="block">
+      <h3>练习处方</h3>
+      <table class="drills">
+        <thead><tr><th>练习</th><th>量</th></tr></thead>
+        <tbody>${l.drills.map(d=>`<tr><td>${esc(d[0])}</td><td>${esc(d[1])}</td></tr>`).join('')}</tbody>
+      </table>
     </section>
-    <section class="block"><h3>自检</h3><div class="check"><b>问自己：</b>${esc(l.check)}</div></section>
-    <section class="block"><h3>我的笔记 <span>自动保存在本浏览器</span></h3>
+
+    <section class="block">
+      <h3>自检</h3>
+      <div class="check"><b>问自己：</b>${esc(l.check)}</div>
+    </section>
+
+    <section class="block">
+      <h3>我的笔记 <span>自动保存在本浏览器</span></h3>
       <textarea id="note" placeholder="看课时用自己的话记下：关键提示、示范动作的细节、我的问题、今天练习的结果…" aria-label="第 ${l.n} 课笔记">${esc(S.notes[l.n]||'')}</textarea>
       <div class="saved" id="saved"></div>
     </section>
+
     <div class="actions" style="justify-content:space-between">
-      ${prev?`<a class="btn" href="#/lesson/${prev.n}">← 第 ${prev.n} 课</a>`:'<span></span>'}
-      ${next?`<a class="btn" href="#/lesson/${next.n}">第 ${next.n} 课 →</a>`:''}
-    </div>`;
-  let t;
-  $('#note').addEventListener('input', e=>{
+      ${prev ? `<a class="btn" href="#/lesson/${prev.n}">← 第 ${prev.n} 课</a>` : '<span></span>'}
+      ${next ? `<a class="btn" href="#/lesson/${next.n}">第 ${next.n} 课 →</a>` : ''}
+    </div>
+  `;
+
+  // Attach event handlers
+  $('#note').addEventListener('input', e => {
     S.notes[l.n] = e.target.value; save();
     $('#saved').textContent = '已保存';
-    clearTimeout(t); t = setTimeout(()=>$('#saved').textContent='', 1500);
+    clearTimeout(window._saveTimer);
+    window._saveTimer = setTimeout(() => $('#saved').textContent = '', 1500);
   });
-  $('#backBtn').addEventListener('click', ()=>{ location.hash = '#/course'; });
+
+  $('#backBtn').addEventListener('click', () => { location.hash = '#/course'; });
+
+  // Watch / Practice Toggles
+  $('#detail').querySelectorAll('button[data-toggle]').forEach(b => {
+    b.onclick = () => {
+      const key = b.dataset.toggle;
+      S[key][l.n] = !S[key][l.n];
+      save(); progress(); renderList(); renderDetail();
+    };
+  });
+
+  // Diagram Lightbox Click
+  const dw = $('#detailDiagramWrap');
+  if(dw){
+    dw.onclick = () => openLightbox(`第 ${l.n} 课 · ${l.cn} 动作高清图解`, dw.innerHTML);
+  }
+
+  // Photo handlers
+  const fileInput = $('#photoFileInput');
+  if(fileInput){
+    fileInput.onchange = e => handleFiles(e.target.files, l.n);
+  }
+  const inlineInput = $('.inline-file-input');
+  if(inlineInput){
+    inlineInput.onchange = e => handleFiles(e.target.files, l.n);
+  }
+
+  // Delete photo
+  $('#photosGrid').onclick = e => {
+    const delBtn = e.target.closest('.photo-del');
+    if(delBtn){
+      e.stopPropagation();
+      const idx = Number(delBtn.dataset.del);
+      S.photos[l.n].splice(idx, 1);
+      save(); renderDetail();
+      return;
+    }
+    const slot = e.target.closest('.photo-slot');
+    if(slot){
+      const img = slot.querySelector('img');
+      if(img) openLightbox(`动作实拍 · 记录`, `<img src="${img.src}" style="max-width:100%;max-height:80vh">`);
+    }
+  };
 }
 
+/* ---------- Image Upload & Clipboard Paste Compression ---------- */
+function handleFiles(files, lessonNum){
+  if(!files || !files.length) return;
+  const file = files[0];
+  if(!file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    compressImage(e.target.result, 960, 0.8, base64 => {
+      if(!S.photos[lessonNum]) S.photos[lessonNum] = [];
+      S.photos[lessonNum].push(base64);
+      save(); renderDetail();
+    });
+  };
+  reader.readAsDataURL(file);
+}
+
+function compressImage(base64, maxDim, quality, cb){
+  const img = new Image();
+  img.onload = () => {
+    let w = img.width, h = img.height;
+    if(w > maxDim || h > maxDim){
+      if(w > h){ h = Math.round(h * maxDim / w); w = maxDim; }
+      else { w = Math.round(w * maxDim / h); h = maxDim; }
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = w; canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    cb(canvas.toDataURL('image/jpeg', quality));
+  };
+  img.src = base64;
+}
+
+// Global paste listener for pasting images
+window.addEventListener('paste', e => {
+  if(!location.hash.startsWith('#/lesson/')) return;
+  const num = Number(location.hash.split('/')[2]);
+  if(!num) return;
+  const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+  for(let item of items){
+    if(item.kind === 'file' && item.type.startsWith('image/')){
+      const file = item.getAsFile();
+      handleFiles([file], num);
+      break;
+    }
+  }
+});
+
+/* ---------- Lightbox Modal ---------- */
+function openLightbox(title, innerContent){
+  $('#lightboxTitle').textContent = title;
+  $('#lightboxBody').innerHTML = innerContent;
+  $('#lightboxModal').classList.add('active');
+}
+function closeLightbox(){
+  $('#lightboxModal').classList.remove('active');
+  $('#lightboxBody').innerHTML = '';
+}
+$('#lightboxClose').onclick = closeLightbox;
+$('#lightboxModal').onclick = e => { if(e.target === $('#lightboxModal')) closeLightbox(); };
+window.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+
+/* ---------- PRE-GAME 20-MIN DRILL ENGINE ---------- */
+let pgTimer = null;
+let pgRunning = false;
+let pgCurrentDrillIndex = 0;
+let pgRemainingSec = PREGAME_DRILLS[0].dur;
+let pgTotalElapsedSec = 0;
+
+function formatClock(sec){
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+function updateTimerUI(){
+  const drill = PREGAME_DRILLS[pgCurrentDrillIndex];
+  $('#pgTimerClock').textContent = formatClock(pgRemainingSec);
+  $('#pgStageName').textContent = `第 ${drill.id}/6 项：${drill.name}`;
+  $('#pgStageSub').textContent = `${drill.phase} · 本阶段剩余 ${formatClock(pgRemainingSec)} · 总进度 ${Math.round(pgTotalElapsedSec / 1200 * 100)}%`;
+  $('#pgProgressBar').style.width = (pgTotalElapsedSec / 1200 * 100) + '%';
+  $('#pgStartBtn').textContent = pgRunning ? '暂停 ⏸' : '开始专项训练 ▶';
+  $('#pgStartBtn').className = pgRunning ? 'timer-btn primary active' : 'timer-btn primary';
+}
+
+function renderActiveDrill(){
+  const d = PREGAME_DRILLS[pgCurrentDrillIndex];
+  const diag = DIAGRAMS[d.diagramKey] || '';
+  $('#pgActiveCard').innerHTML = `
+    <div class="active-header">
+      <div class="active-title-row">
+        <span class="active-badge">${d.phase}</span>
+        <h3>${d.id}. ${esc(d.name)}</h3>
+        <span>${d.en}</span>
+      </div>
+      <span class="drill-dur" style="font-size:13px;padding:4px 10px">${d.tag}</span>
+    </div>
+    <div class="active-grid">
+      <div class="active-diagram" id="activeDiagWrap" title="点击放大查看">
+        ${diag}
+      </div>
+      <div class="active-cues-panel">
+        <div class="active-cue-box">
+          <h5>🎯 训练动作要求</h5>
+          <ul class="drill-bullets" style="margin-top:6px">
+            ${d.points.map(pt => `<li>${esc(pt)}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="active-cue-box">
+          <h5>⚡️ 3 大核心身体体感 (Cues)</h5>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px">
+            ${d.cues.map(c => `
+              <div style="font-size:13px"><b style="color:var(--orange-text)">[${esc(c.tag)}]</b> ${esc(c.desc)}</div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="active-cue-box warn">
+          <h5>⚠️ 常见失误避坑</h5>
+          <p>${esc(d.mistake)}</p>
+        </div>
+      </div>
+    </div>
+  `;
+  const adw = $('#activeDiagWrap');
+  if(adw){
+    adw.onclick = () => openLightbox(`${d.name} · 动作图解`, adw.innerHTML);
+  }
+}
+
+function renderPregameGrid(){
+  $('#pgGrid').innerHTML = PREGAME_DRILLS.map((d, idx) => `
+    <div class="drill-card ${idx === pgCurrentDrillIndex ? 'current' : ''}" data-idx="${idx}">
+      <div class="drill-card-head">
+        <div class="drill-card-title">
+          <span class="drill-step-num">${d.id}</span>
+          <span>${esc(d.name)}</span>
+        </div>
+        <span class="drill-dur">${d.tag}</span>
+      </div>
+      <div class="drill-card-body">
+        <div class="drill-thumb" data-jump="${idx}">
+          ${DIAGRAMS[d.diagramKey] || ''}
+        </div>
+        <ul class="drill-bullets">
+          ${d.cues.map(c => `<li><b>${esc(c.tag)}:</b> ${esc(c.desc)}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="drill-card-footer">
+        <span style="font-size:12px;color:var(--muted)">${d.phase}</span>
+        <button class="jump-btn" data-jump="${idx}">${idx === pgCurrentDrillIndex ? '● 正在练习此项' : '切换练习此项 →'}</button>
+      </div>
+    </div>
+  `).join('');
+
+  $('#pgGrid').onclick = e => {
+    const b = e.target.closest('[data-jump]');
+    if(!b) return;
+    const idx = Number(b.dataset.jump);
+    jumpToDrill(idx);
+  };
+}
+
+function jumpToDrill(idx){
+  pgCurrentDrillIndex = idx;
+  pgRemainingSec = PREGAME_DRILLS[idx].dur;
+  let elapsed = 0;
+  for(let i = 0; i < idx; i++) elapsed += PREGAME_DRILLS[i].dur;
+  pgTotalElapsedSec = elapsed;
+  updateTimerUI();
+  renderActiveDrill();
+  renderPregameGrid();
+  playBeep();
+}
+
+function toggleTimer(){
+  if(pgRunning){
+    clearInterval(pgTimer);
+    pgRunning = false;
+    updateTimerUI();
+  } else {
+    pgRunning = true;
+    updateTimerUI();
+    playTone(660, 0.15, 'sine');
+    pgTimer = setInterval(() => {
+      if(pgRemainingSec > 0){
+        pgRemainingSec--;
+        pgTotalElapsedSec++;
+        if(pgRemainingSec <= 3 && pgRemainingSec > 0) playTone(440, 0.08, 'sine');
+        updateTimerUI();
+      } else {
+        playChime();
+        if(pgCurrentDrillIndex < PREGAME_DRILLS.length - 1){
+          jumpToDrill(pgCurrentDrillIndex + 1);
+        } else {
+          clearInterval(pgTimer);
+          pgRunning = false;
+          updateTimerUI();
+          alert('🎉 恭喜！赛前 20 分钟控球专项训练圆满完成！手感已完全激活，带着最滚烫的肌肉记忆去球场统治比赛吧！');
+        }
+      }
+    }, 1000);
+  }
+}
+
+function resetTimer(){
+  clearInterval(pgTimer);
+  pgRunning = false;
+  jumpToDrill(0);
+}
+
+function nextDrill(){
+  if(pgCurrentDrillIndex < PREGAME_DRILLS.length - 1){
+    jumpToDrill(pgCurrentDrillIndex + 1);
+  }
+}
+function prevDrill(){
+  if(pgCurrentDrillIndex > 0){
+    jumpToDrill(pgCurrentDrillIndex - 1);
+  }
+}
+
+// Timer Button Listeners
+$('#pgStartBtn').onclick = toggleTimer;
+$('#pgResetBtn').onclick = resetTimer;
+$('#pgNextBtn').onclick = nextDrill;
+$('#pgPrevBtn').onclick = prevDrill;
+$('#pgSoundBtn').onclick = () => {
+  soundEnabled = !soundEnabled;
+  $('#pgSoundBtn').textContent = soundEnabled ? '🔔' : '🔕';
+  $('#pgSoundBtn').classList.toggle('active', soundEnabled);
+};
+
+/* ---------- Workout Log & Rating System ---------- */
+let selectedRating = 5;
+$('#starRating').onclick = e => {
+  const b = e.target.closest('.star-btn');
+  if(!b) return;
+  selectedRating = Number(b.dataset.val);
+  $('#starRating').querySelectorAll('.star-btn').forEach(btn => {
+    btn.classList.toggle('on', Number(btn.dataset.val) <= selectedRating);
+  });
+};
+
+function renderLogs(){
+  const list = $('#logList');
+  if(!S.pregameLogs || !S.pregameLogs.length){
+    list.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:8px 0">暂无打卡记录。每次训练完点击上方按钮打卡，自动保存历史手感！</div>';
+    return;
+  }
+  list.innerHTML = S.pregameLogs.slice().reverse().map((item, idx) => `
+    <div class="log-item">
+      <div>
+        <span style="color:#f59e0b;font-weight:700">${'★'.repeat(item.rating)}</span>
+        <span style="margin-left:8px">${esc(item.note || '赛前20分钟控球完成！')}</span>
+      </div>
+      <div class="log-meta">${item.date}</div>
+    </div>
+  `).join('');
+}
+
+$('#submitLogBtn').onclick = () => {
+  const note = $('#logNoteInput').value.trim();
+  const dateStr = new Date().toLocaleDateString('zh-CN', {month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+  S.pregameLogs.push({
+    rating: selectedRating,
+    note: note,
+    date: dateStr
+  });
+  save();
+  $('#logNoteInput').value = '';
+  renderLogs();
+  playChime();
+};
+
+/* ---------- Needs, Plan, Notes Views ---------- */
 function renderNeeds(){
-  $('#needs').innerHTML = NEEDS.map(n=>`
-    <div class="need"><h4>${esc(n.t)}</h4><p>${esc(n.d)}</p>
-      <div class="go">${n.ls.map(i=>{const l=L[i-1];return `<a class="golink" href="#/lesson/${i}"><span class="num">${i}</span>${esc(l.cn)}</a>`}).join('')}</div>
-    </div>`).join('');
+  $('#needs').innerHTML = NEEDS.map(n => `
+    <div class="need">
+      <h4>${esc(n.t)}</h4>
+      <p>${esc(n.d)}</p>
+      <div class="go">
+        ${n.ls.map(num => {
+          const l = L.find(x => x.n === num);
+          return `<a class="golink" href="#/lesson/${num}"><span class="num">${num}</span><span>${esc(l.cn)}</span></a>`;
+        }).join('')}
+      </div>
+    </div>
+  `).join('');
 }
+
 function renderPlan(){
-  $('#weeks').innerHTML = WEEKS.map((w,i)=>`
-    <div class="week"><div class="wk">第 ${i+1} 周</div><h4>${esc(w.t)}</h4>
-      <div class="ls">${w.ls.map(n=>`<a href="#/lesson/${n}">第 ${n} 课</a>`).join('')}</div>
-      <ul>${w.do.map(d=>`<li>${esc(d)}</li>`).join('')}</ul></div>`).join('');
-  $('#session').innerHTML = SESSION.map(s=>`
-    <div class="step"><div class="t">${s[0]}<small> 分钟</small></div><h5>${s[1]}</h5><p>${s[2]}</p></div>`).join('');
+  $('#weeks').innerHTML = WEEKS.map((w, idx) => `
+    <div class="week">
+      <div class="wk">第 ${idx + 1} 周</div>
+      <h4>${esc(w.t)}</h4>
+      <div class="ls">
+        ${w.ls.map(num => `<a href="#/lesson/${num}">第 ${num} 课</a>`).join('')}
+      </div>
+      <ul>${w.do.map(d => `<li>${esc(d)}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+
+  $('#session').innerHTML = SESSION.map(s => `
+    <div class="step">
+      <div class="t">${s[0]} <small>分钟</small></div>
+      <h5>${esc(s[1])}</h5>
+      <p>${esc(s[2])}</p>
+    </div>
+  `).join('');
 }
+
 function renderNotes(){
-  const has = L.filter(l=>(S.notes[l.n]||'').trim());
-  $('#notesList').innerHTML = has.length ? has.map(l=>`
-    <div class="note-card"><h4><a href="#/lesson/${l.n}">第 ${l.n} 课 · ${esc(l.cn)}</a></h4><pre>${esc(S.notes[l.n])}</pre></div>`).join('')
-    : '<p class="empty" style="padding:0">还没有笔记。打开任意一课，在“我的笔记”里开始记录。</p>';
+  const ns = Object.entries(S.notes).filter(([k, v]) => v && v.trim());
+  const box = $('#notesList');
+  if(!ns.length){
+    box.innerHTML = '<p class="empty">还没有写过笔记。在任何一门课的页面下方写下心得，就会汇总在这里。</p>';
+    return;
+  }
+  box.innerHTML = ns.map(([k, v]) => {
+    const l = L.find(x => x.n === Number(k));
+    return `
+      <div class="note-card">
+        <h4><a href="#/lesson/${k}">第 ${k} 课 · ${esc(l.cn)} ↗</a></h4>
+        <pre>${esc(v)}</pre>
+      </div>
+    `;
+  }).join('');
 }
 
-function download(name, text, type){
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(new Blob([text],{type}));
-  a.download = name; document.body.appendChild(a); a.click(); a.remove();
-}
-$('#exportBtn').addEventListener('click', ()=>{
-  const md = ['# 库里大师课 · 我的笔记',''].concat(L.filter(l=>(S.notes[l.n]||'').trim()).map(l=>
-    `## 第 ${l.n} 课 ${l.cn}\n${S.watched[l.n]?'已看完':'未看'} · ${S.practiced[l.n]?'已练过':'未练'}\n\n${S.notes[l.n].trim()}\n`)).join('\n');
-  download('库里大师课笔记.md', md, 'text/markdown');
-});
-$('#backupBtn').addEventListener('click', ()=> download('curry-masterclass-backup.json', JSON.stringify(S,null,2), 'application/json'));
-$('#importFile').addEventListener('change', e=>{
-  const f = e.target.files[0]; if(!f) return;
-  f.text().then(txt=>{
-    try{ const d = JSON.parse(txt); S = {watched:d.watched||{}, practiced:d.practiced||{}, notes:d.notes||{}}; save(); route(); alert('已导入备份'); }
-    catch(err){ alert('文件格式不对，请选择之前导出的 JSON 备份'); }
+$('#exportBtn').onclick = () => {
+  const ns = Object.entries(S.notes).filter(([k, v]) => v && v.trim());
+  if(!ns.length){ alert('还没有笔记可导出'); return; }
+  let md = '# 库里大师课 · 我的学习笔记\n\n';
+  ns.forEach(([k, v]) => {
+    const l = L.find(x => x.n === Number(k));
+    md += `## 第 ${k} 课 · ${l.cn}\n\n${v}\n\n---\n\n`;
   });
-});
+  const blob = new Blob([md], {type:'text/markdown;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '库里大师课_我的笔记.md';
+  a.click();
+};
 
-/* ---------- Events ---------- */
-$('#chips').addEventListener('click', e=>{ const b = e.target.closest('.chip'); if(!b) return; filter = b.dataset.f; renderChips(); renderList(); });
-$('#q').addEventListener('input', e=>{ query = e.target.value.trim(); renderList(); });
-$('#list').addEventListener('click', e=>{ const b = e.target.closest('.item'); if(b) location.hash = '#/lesson/'+b.dataset.n; });
-$('#detail').addEventListener('click', e=>{
-  const b = e.target.closest('[data-toggle]'); if(!b) return;
-  const k = b.dataset.toggle; S[k][current] = !S[k][current]; save();
-  renderDetail(); renderList(); progress();
+/* ---------- Search and Tabs Routing ---------- */
+$('#q').addEventListener('input', e => {
+  query = e.target.value;
+  renderList();
 });
-document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click', ()=>{ location.hash = '#/'+t.dataset.view; }));
 
 function show(view){
-  document.querySelectorAll('.view').forEach(v=>v.hidden = v.id !== 'v-'+view);
-  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.view===view));
+  ['course', 'pregame', 'need', 'plan', 'notes'].forEach(v => {
+    const el = $('#v-' + v);
+    if(el) el.hidden = (v !== view);
+  });
+  $$('.tab').forEach(t => {
+    t.setAttribute('aria-selected', t.dataset.view === view);
+  });
 }
+
+$$('.tab').forEach(t => {
+  t.onclick = () => {
+    const v = t.dataset.view;
+    location.hash = (v === 'course') ? '#/course' : '#/' + v;
+  };
+});
+
 function route(){
-  const h = location.hash.replace(/^#\/?/,'');
+  const h = location.hash.replace(/^#\/?/, '');
   const [view, arg] = h.split('/');
   progress();
-  if(view==='lesson' && L[Number(arg)-1]){
-    current = Number(arg); show('course'); document.body.classList.add('show-detail');
-    renderChips(); renderList(); renderDetail(); window.scrollTo(0,0); return;
+
+  if(view === 'lesson' && L[Number(arg) - 1]){
+    current = Number(arg);
+    show('course');
+    document.body.classList.add('show-detail');
+    renderChips();
+    renderList();
+    renderDetail();
+    window.scrollTo(0, 0);
+    return;
   }
+
   document.body.classList.remove('show-detail');
-  if(view==='need'){ show('need'); renderNeeds(); }
-  else if(view==='plan'){ show('plan'); renderPlan(); }
-  else if(view==='notes'){ show('notes'); renderNotes(); }
-  else { show('course'); renderChips(); renderList(); renderDetail(); }
+
+  if(view === 'pregame'){
+    show('pregame');
+    updateTimerUI();
+    renderActiveDrill();
+    renderPregameGrid();
+    renderLogs();
+  } else if(view === 'need'){
+    show('need');
+    renderNeeds();
+  } else if(view === 'plan'){
+    show('plan');
+    renderPlan();
+  } else if(view === 'notes'){
+    show('notes');
+    renderNotes();
+  } else {
+    show('course');
+    renderChips();
+    renderList();
+    renderDetail();
+  }
 }
+
 window.addEventListener('hashchange', route);
 route();
 </script>
